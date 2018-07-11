@@ -139,27 +139,41 @@ header {
 }
 
 #advanced-input {
-	width: 80%;
+	width: 50%;
 	margin: 30px 0;
 }
 
 #general-input {
-	width: 80%;
+	width: 50%;
 	margin: 30px 0;
 }
 
 .travelImages {
 	border-radius: 7px;
+	margin-top: 30px;
 }
 
-/* h2 {
-    background-color: #D54137;
-    padding: 100px;
-    margin:10px;
+#result-display {	
+	margin-top: 30px;
 }
 
-h3 {
-    background-color:#D54937;
-    padding: 100px;
-    margin:10px;
-} */
+#open-advanced {
+	text-decoration: none;
+	background: #D54317;
+	color:white;
+}
+
+#open-general {
+	text-decoration: none;
+	background: #D54317;
+	color:white;
+}
+
+#open-advanced:hover {
+	background: #4B4B4B;
+	color: #e5e5e5;
+	padding: 10px 10px;
+}
+
+
+
