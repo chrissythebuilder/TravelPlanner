@@ -18,10 +18,8 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <!-- Firebase Library -->
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
-    <!-- jQuery Library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="assets/javascript/app.js"></script>
-    
+
+
 </head>
 
 <body class="jumbotron">
@@ -33,7 +31,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Here are the top 5 recommendations based on your destination:</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -56,6 +54,11 @@
     </div>
     <div id="weather-display">
 
+    <div class="alert alert-danger" id="adv-disclaim">
+        <p id="open-advanced">Click here if you already know the name of the place you are looking for!</p>
+    </div>
+    <div class="alert alert-success" id="gen-disclaim">
+        <p id="open-general">Click here for a general search.</p>
     </div>
     <div class="form-group" id="general-search">
         <input type="text" class="form-control" id="general-input" placeholder="General search...">
@@ -65,12 +68,12 @@
         <input type="text" class="form-control" id="advanced-input" placeholder="Advanced search...">
         <button class="btn btn-primary" id="adv-item">Search</button>
     </div>
-    <div id="adv-disclaim">
+    <!-- <div id="adv-disclaim">
         <button class="btn btn-link" id="open-advanced"> Click if you know the name of your specific destination</button>
     </div>
     <div id="gen-disclaim">
         <button class="btn btn-link" id="open-general"> General search </button>
-    </div>
+    </div> -->
 
     <div id="result-display"></div>
 
@@ -83,6 +86,10 @@
     <div class="form-group">
         <button class="btn btn-success" id="confirm-list">Confirm List</button>
     </div>
+
+    <!-- jQuery Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="assets/javascript/app.js"></script>
 </body>
 
 </html>
