@@ -48,3 +48,21 @@ table {
 }
 
 /* Page Display Starts Here */
+
+h1 {
+    background-color: rgb(233, 67, 30);
+    padding: 100px;
+    margin:10px;
+}
+
+h2 {
+    background-color: #D54137;
+    padding: 100px;
+    margin:10px;
+}
+
+h3 {
+    background-color:#D54937;
+    padding: 100px;
+    margin:10px;
+}
