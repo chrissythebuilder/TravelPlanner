@@ -104,8 +104,20 @@ input {
 
 /* Planner Page Styles */
 
+header {
+	text-align: center;
+	font-size: 450%;
+	font-family: 'Faster One', cursive;
+	margin: -20px 50px 50px 50px;
+	background-color: #D54317;
+	color: rgba(0,0,0,.8);
+	padding: 40px 0;
+	border-radius: 8px;
+}
+
 .jumbotron {
 	margin-left: 30px;
+	margin-right: 30px;
 }
 
 #title h2 {
@@ -134,6 +146,10 @@ input {
 #general-input {
 	width: 80%;
 	margin: 30px 0;
+}
+
+.travelImages {
+	border-radius: 7px;
 }
 
 /* h2 {

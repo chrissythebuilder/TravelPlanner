@@ -26,6 +26,8 @@
 
 <body class="jumbotron">
 
+    <header> BCKN Travel Planner </header>
+
     <!-- Modal -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -50,7 +52,7 @@
 
     <div id = "title">
         <h2>Planner Page</h2>
-        <p>We would like to officially welcome you to BCKN Trip Planner Builder's page. In here, you will have the opportunity to start building your customized list of points of destinations for the selected date. <span id="strong"> Remember: Make use of our added weather feature to assist you in choosing which activities you'd like to participate in today. </span> </p>
+        <p>We would like to officially welcome you to BCKN Trip Planner Builder's page. In here, you will have the opportunity to start building your customized list of points of interest for the selected date. Once done, confirm your list with the button below so you can see all the lists you have built as well as start planning activities for another date and/or destination. <br> <br> <span id="strong"> Remember: Make use of our added weather feature to assist you in choosing which activities you'd like to participate in. </span> </p>
     </div>
     <div id="weather-display">
 
@@ -204,6 +206,7 @@
                             for (var i = 0; i < result.length; i++) {
                                 var imageDiv = $("<div style='display:block; float:left' class='col col-3'>");
                                 var image = $("<img style='height: auto; width:100%; max-width: 360px'>");
+                                image.addClass("travelImages");
                                 image.attr({
                                     "src": result[i].link,
                                 })
