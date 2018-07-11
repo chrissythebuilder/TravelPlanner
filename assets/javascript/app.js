@@ -164,13 +164,14 @@ $(document).ready(function () {
                     var cx = "000852579600713817389:mvwf8b9vrdi";
 
                     // Google Search API is limited to 100 Queries per day.***** This is an issue.
-                    queryURL = "https://www.googleapis.com/customsearch/v1?key=" + APIkey + "&cx=" + cx + "&searchType=image&num=10&q=" + search;
-
+                    // queryURL = "https://www.googleapis.com/customsearch/v1?key=" + APIkey + "&cx=" + cx + "&searchType=image&num=10&q=" + search;
+                    queryURL = "https://api.foursquare.com/v2/venues/explore?near=Toronto,ON,Canada&client_id=0RL33EADN1AF1SNBF34VNKWE5ELLR2UJYYGXIPLISZCDSUEC&client_secret=LADCA322VPVXK4OD4BVAKTXHY1KGFIGJFM3ROSKIF4KYXOCU&query=" + search + "&v=20180711";
+                    // console.log(queryURL);
                     $.ajax({
                         url: queryURL,
                         method: "GET"
                     }).then(function (response) {
-                        var result = response.items;
+                        var result = response.response.groups[0].items;
                         console.log(result);
                         //Dynamically create divs and btn links for search results.
                         for (var j = 0; j < 5; j++) {
