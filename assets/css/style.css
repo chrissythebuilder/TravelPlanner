@@ -49,13 +49,94 @@ table {
 
 /* Page Display Starts Here */
 
-h1 {
-    background-color: rgb(233, 67, 30);
-    padding: 100px;
-    margin:10px;
+
+#landing img {
+	position: relative;
+	margin: 11px 130px;
+	width: 80vw;
+	z-index: 1;
 }
 
-h2 {
+#details {
+	position: absolute;
+	width: 60vw;
+	top: 200px;
+	left: 300px;
+	z-index: 10;
+	background-color: rgba(213,65,55, .3);
+	color: white;
+}
+
+
+h1 {
+	margin-bottom: 60px;
+	text-align: center;
+	font-size: 450%;
+	font-family: 'Faster One', cursive;
+}
+
+p {
+	margin-top: 50px;
+	font-weight: 700;
+	font-family: 'PT Sans', sans-serif;
+	margin-bottom: 10px;
+	font-size: 120%;
+	text-align: center;
+}
+
+input {
+	width: 50%;
+	margin-left: 215px;
+}
+
+#submit2 {
+	margin-top: 50px;
+	margin-left: 300px;
+	margin-bottom: 30px;
+	width: 30%;
+	font-weight: 700;
+	font-family: 'PT Sans', sans-serif;
+}
+
+#submit2:hover {
+	padding: 20px;
+}
+
+/* Planner Page Styles */
+
+.jumbotron {
+	margin-left: 30px;
+}
+
+#title h2 {
+	font-family: 'PT Sans', sans-serif;
+	font-size: 200%;
+	font-weight: 700;
+}
+
+#title p {
+	margin-top: 30px;
+	text-align: left;
+	font-size: 100%;
+	line-height: 2em;
+	font-weight: 400;
+}
+
+#strong {
+	font-weight: 700;
+}
+
+#advanced-input {
+	width: 80%;
+	margin: 30px 0;
+}
+
+#general-input {
+	width: 80%;
+	margin: 30px 0;
+}
+
+/* h2 {
     background-color: #D54137;
     padding: 100px;
     margin:10px;
@@ -65,4 +146,4 @@ h3 {
     background-color:#D54937;
     padding: 100px;
     margin:10px;
-}
+} */
