@@ -96,10 +96,16 @@ input {
 	width: 30%;
 	font-weight: 700;
 	font-family: 'PT Sans', sans-serif;
+	background: #D54317;
+	border: solid 2px #D54317;
 }
 
 #submit2:hover {
-	padding: 20px;
+	padding: 5px;
+	background: green;
+	border-radius: 100px;
+	border: solid 10px green;
+	font-size: 110%;
 }
 
 /* Planner Page Styles */

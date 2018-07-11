@@ -22,6 +22,14 @@ $(document).ready(function() {
         var queryURL;
         var searchAdvanced = $("#advanced-search");
         var searchGeneral = $("#general-search");
+        var destination = $("#destination");
+        var date = $("#date");
+
+        // Landing Page Info
+
+        $("#submit2").on("click", function () {
+            
+        });
 
         // To hide the opening fields.
         searchAdvanced.hide();
