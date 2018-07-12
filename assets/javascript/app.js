@@ -14,6 +14,8 @@ $(document).ready(function () {
     var dataRef = firebase.database();
 
     // Define global variables
+    var planning = $("#planning");
+    var landing = $("#landing");
     var genItem = $("#gen-item");
     var advItem = $("#adv-item");
     var inputGeneral;
@@ -22,37 +24,54 @@ $(document).ready(function () {
     var queryURL;
     var searchAdvanced = $("#advanced-search");
     var searchGeneral = $("#general-search");
+    var submit2 = $("#submit2");
     var destination = $("#destination");
+    var d;
     var date = $("#date");
+    var maxTemp;
+    var minTemp;
+    var icon;
+    var description;
+    var currentDate;
 
     // Landing Page Info
 
-    $("#submit2").on("click", function () {
+    // $("#submit2").on("click", function () {
+    //     alert("hello")
 
-    });
+    //     displayWeather();
+    // });
+
 
     // To hide the opening fields.
+    planning.hide();
     searchAdvanced.hide();
     $("#gen-disclaim").hide();
 
     function displayWeather() {
         // Add onclick even for the submit "add-item" button.
-        genItem.on("click", function (event) {
+        submit2.on("click", function (event) {
             event.preventDefault();
 
-            inputGeneral = $("#general-input").val().trim();
-            inputAdvanced = $("#advanced-input").val("");
-            $("#images-display").empty();
-            $("#result-display").empty();
+            landing.hide();
+            planning.show();
+
+            d = destination.val().trim();
+            localStorage.clear();
+            localStorage.setItem("destination", d);
+            console.log(d);
+            var city = localStorage.getItem("destination");
+            console.log(city);
 
             // Main test: 1. Did the user input anything in to either text boxes? 2. Is the value < 5 characters?  
-            if (inputGeneral !== "") {
-                if ($("#general-input").val().length < 5) {
+            if (destination.val() !== "") {
+                if (destination.val().length < 5) {
                     alert("You must type at least 5 characters.");
                     // change alert to modal.
                 } else {
-                    search = inputGeneral;
-                    $("#general-input").val("");
+                    search = city;
+                    console.log(search);
+                    destination.val("");
 
                     var APIkey = "7515b70f90e44119b6484f6d00871af3";
 
@@ -62,18 +81,20 @@ $(document).ready(function () {
                         url: queryURL,
                         method: "GET"
                     }).then(function (response) {
-                        var result = response;
-                        var maxTemp = response.data[0].app_max_temp;
-                        var minTemp = response.data[0].app_min_temp;
-                        var icon = response.data[0].weather.icon;
-                        var description = response.data[0].weather.description;
-                        var currentDate = response.data[0].datetime;
+                        result = response;
+                        maxTemp = response.data[0].app_max_temp;
+                        minTemp = response.data[0].app_min_temp;
+                        icon = response.data[0].weather.icon;
+                        description = response.data[0].weather.description;
+                        currentDate = response.data[0].datetime;
                         console.log(result);
-                        console.log(maxTemp);
+                        localStorage.setItem("maxTemp", maxTemp);
                         console.log(minTemp);
                         console.log(icon);
                         console.log(description);
                         console.log(currentDate);
+
+                        var x = localStorage.getItem("maxTemp");
 
                         var weatherDiv = $("<div style='display:block;' class='col col-3'>");
                         var date = $("<h5 class='text-center'>");
@@ -165,8 +186,8 @@ $(document).ready(function () {
 
                     // Google Search API is limited to 100 Queries per day.***** This is an issue.
                     // queryURL = "https://www.googleapis.com/customsearch/v1?key=" + APIkey + "&cx=" + cx + "&searchType=image&num=10&q=" + search;
-                    queryURL = "https://api.foursquare.com/v2/venues/explore?near=Toronto,ON,Canada&client_id=0RL33EADN1AF1SNBF34VNKWE5ELLR2UJYYGXIPLISZCDSUEC&client_secret=LADCA322VPVXK4OD4BVAKTXHY1KGFIGJFM3ROSKIF4KYXOCU&query=" + search + "&v=20180711";
-                    // console.log(queryURL);
+                    queryURL = "https://api.foursquare.com/v2/venues/explore?near=" + city + "&client_id=0RL33EADN1AF1SNBF34VNKWE5ELLR2UJYYGXIPLISZCDSUEC&client_secret=LADCA322VPVXK4OD4BVAKTXHY1KGFIGJFM3ROSKIF4KYXOCU&query=" + search + "&v=20180711";
+                    console.log(queryURL);
                     $.ajax({
                         url: queryURL,
                         method: "GET"
@@ -262,7 +283,7 @@ $(document).ready(function () {
         $("#adv-disclaim").show();
     });
 
-    // displayWeather();
+    displayWeather();
     runGeneral();
         // runAdvanced();
 });
