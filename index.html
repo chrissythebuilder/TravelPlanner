@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome!</title>
+    <link rel="icon" href="assets/images/loginFavicon.png">
+    <!-- Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!--firebaseUI CDN-->
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+    <link href="https://fonts.googleapis.com/css?family=Chela+One|Patua+One|Crete+Round+|Faster+One" rel="stylesheet">
+
+    
+  <style> 
+
+ #creteRound{
+
+    font-family: 'Crete Round', seri;
+    text-align:center;
+    color:white;
+    font-size:80px;
+  }
+
+  #patuaOne{
+    font-family: 'Patua One', cursive;
+    text-align:center;
+    color:white;
+    font-size:80px;
+
+
+
+  }
+   /* #chelaOne{
+    font-family: 'Chela One', cursive;
+    text-align:center;
+    color:white;
+  } */
+#fasterOne{
+  font-family: 'Faster One', cursive;
+  /* color:#D84B37; */
+  color:white;
+  text-align:center;
+  font-size:80px;
+  margin-top:25px;
+  margin-bottom:50px;
+
+}
+
+
+img{
+  height:25%;
+}
+
+    
+</style>
+
+</head>
+<body style="background-image:url('assets/images/loginBackground.jpg')">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h1 id="fasterOne">Welcome to BCKN Trip Planner </h1> 
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div id="firebaseui-auth-container"></div>
+                    <div id="loader">Loading...</div>
+                </div>
+            </div> 
+        </div>  
+
+<script>
+
+
+
+
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyD3GtRS1N5UxrzvxA1i8XV0babAG61zf9Q",
+        authDomain: "groupproject1-e81bf.firebaseapp.com",
+        databaseURL: "https://groupproject1-e81bf.firebaseio.com",
+        projectId: "groupproject1-e81bf",
+        storageBucket: "groupproject1-e81bf.appspot.com",
+        messagingSenderId: "825404731161"
+    };
+  
+      firebase.initializeApp(config);
+
+
+      // Initialize the FirebaseUI Widget using Firebase.
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+
+      ui.start('#firebaseui-auth-container', {
+      signInOptions: [
+        //List of OAuth providers supported.
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+        //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+      // firebase.auth.GithubAuthProvider.PROVIDER_ID
+      ],
+      // Other config options for future...
+    });
+
+
+
+
+
+      var uiConfig = {
+        callbacks: {
+          signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+            // User successfully signed in.
+            // Return type determines whether we continue the redirect automatically
+            // or whether we leave that to developer to handle.
+            return true;
+          },
+          uiShown: function() {
+            // The widget is rendered.
+            // Hide the loader.
+            document.getElementById('loader').style.display = 'none';
+          }
+        },
+
+          // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+          signInFlow: 'popup',
+          signInSuccessUrl: 'planner.html',
+          signInOptions: [
+            // Leave the lines as is for the providers you want to offer your users.
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+            //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+          // firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+            //firebase.auth.GithubAuthProvider.PROVIDER_ID,
+            firebase.auth.EmailAuthProvider.PROVIDER_ID,
+            firebase.auth.PhoneAuthProvider.PROVIDER_ID
+          ],
+          // Terms of service url.
+          tosUrl: 'https://bethgmariam.github.io'
+      };
+
+      // // The start method will wait until the DOM is loaded.
+      ui.start('#firebaseui-auth-container', uiConfig);
+
+
+      var provider = new firebase.auth.GoogleAuthProvider();
+
+      firebase.auth().signInWithPopup(provider).then(function(result) {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        // ...
+      }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+      });
+
+
+
+</script>
+
+</body>
+</html>
