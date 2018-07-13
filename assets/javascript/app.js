@@ -16,6 +16,7 @@ $(document).ready(function () {
     // Define global variables
     var planning = $("#planning");
     var landing = $("#landing");
+    var itinerary = $("#itinerary");
     var genItem = $("#gen-item");
     var advItem = $("#adv-item");
     var inputGeneral;
@@ -26,7 +27,14 @@ $(document).ready(function () {
     var searchGeneral = $("#general-search");
     var submit2 = $("#submit2");
     var destination = $("#destination");
+    var fromDate;
+    var toDate;
+    var firstDay;
+    var lastDay;
+    var totalDays
     var d;
+    var dayCounter = 1;
+    var city;
     var date = $("#date");
     var maxTemp;
     var minTemp;
@@ -34,17 +42,10 @@ $(document).ready(function () {
     var description;
     var currentDate;
 
-    // Landing Page Info
-
-    // $("#submit2").on("click", function () {
-    //     alert("hello")
-
-    //     displayWeather();
-    // });
-
-
     // To hide the opening fields.
+    landing.show();
     planning.hide();
+    itinerary.hide();
     searchAdvanced.hide();
     $("#gen-disclaim").hide();
 
@@ -56,11 +57,22 @@ $(document).ready(function () {
             landing.hide();
             planning.show();
 
+            fromDate = $("#fromDate").val().trim();
+            toDate = $("#toDate").val().trim();
+            firstDay = (Date.parse(fromDate) / 1000 / 60 / 60 / 24);
+            lastDay = (Date.parse(toDate) / 1000 / 60 / 60 / 24);
+            totalDays = lastDay - firstDay;
+            console.log(totalDays);
+            console.log(fromDate);
+            console.log(toDate);
             d = destination.val().trim();
             localStorage.clear();
             localStorage.setItem("destination", d);
+            localStorage.setItem("totalDays", totalDays);
             console.log(d);
-            var city = localStorage.getItem("destination");
+            total = parseInt(localStorage.getItem("totalDays"));
+            city = localStorage.getItem("destination");
+            console.log(total);
             console.log(city);
 
             // Main test: 1. Did the user input anything in to either text boxes? 2. Is the value < 5 characters?  
@@ -88,13 +100,11 @@ $(document).ready(function () {
                         description = response.data[0].weather.description;
                         currentDate = response.data[0].datetime;
                         console.log(result);
-                        localStorage.setItem("maxTemp", maxTemp);
+                        console.log(maxTemp);
                         console.log(minTemp);
                         console.log(icon);
                         console.log(description);
                         console.log(currentDate);
-
-                        var x = localStorage.getItem("maxTemp");
 
                         var weatherDiv = $("<div style='display:block;' class='col col-3'>");
                         var date = $("<h5 class='text-center'>");
@@ -115,43 +125,6 @@ $(document).ready(function () {
                         weatherDiv.append(p);
                         $("#weather-display").prepend(weatherDiv);
                     })
-                    // var APIkey = "wgcUV64pgmfWgnlUx831FLLs2KM0LabC";
-
-                    // queryURL = "http://www.mapquestapi.com/geocoding/v1/address?key=" + APIkey + "&location=" + search;
-
-                    // $.ajax({
-                    //     url: queryURL,
-                    //     method: "GET"
-                    // }).then(function (response) {
-                    //     // var result = response.results;
-                    //     // longitude = parseFloat(response.results[0].locations[0].displayLatLng.lat.toFixed(4));
-                    //     // latitude = parseFloat(response.results[0].locations[0].displayLatLng.lng.toFixed(4));
-                    //     longitude = response.results[0].locations[0].displayLatLng.lat;
-                    //     latitude = response.results[0].locations[0].displayLatLng.lng;
-                    //     console.log(longitude);
-                    //     console.log("latitude" + latitude);
-
-                    //     var APIkey1 = "d38593be2d85a2092953fb7189767bc9"
-                    //     queryURL1 = "https://api.darksky.net/forecast/" + APIkey1 + "/" + latitude + "," + longitude;
-                    //     // queryURL1 = "https://api.darksky.net/forecast/14054edeb95fa12dc60adb341b933334/" + latitude + "," + longitude;
-                    //     console.log(queryURL1);
-                    //     $.ajax({
-                    //         url: queryURL1,
-                    //         method: "GET"
-                    //     }).then(function (response) {
-                    //         var result1 = response;
-                    //         console.log(result1);
-                    //         //Dynamically create divs and btn links for search results.
-                    //         for (var j = 0; j < 5; j++) {
-                    //             var resultDiv = $("<div>")
-                    //             var resultDisplay = $("<button>" + result[j].snippet + "</button>");
-                    //             resultDisplay.addClass("btn btn-link");
-                    //             resultDiv.prepend(resultDisplay);
-                    //             $("#result-display").append(resultDiv);
-                    //         }
-                    //     });
-                    // });
-
                 }
             } else {
                 alert("You did not type in the text field! Please try again.");
@@ -181,28 +154,65 @@ $(document).ready(function () {
                     search = inputGeneral;
                     $("#general-input").val("");
 
-                    var APIkey = "AIzaSyBMHhF1IhDFYqU-cjBf9YhaoTpDCB27lzI";
-                    var cx = "000852579600713817389:mvwf8b9vrdi";
+                    var clientID = "0RL33EADN1AF1SNBF34VNKWE5ELLR2UJYYGXIPLISZCDSUEC";
+                    var clientSecret = "LADCA322VPVXK4OD4BVAKTXHY1KGFIGJFM3ROSKIF4KYXOCU";
 
                     // Google Search API is limited to 100 Queries per day.***** This is an issue.
                     // queryURL = "https://www.googleapis.com/customsearch/v1?key=" + APIkey + "&cx=" + cx + "&searchType=image&num=10&q=" + search;
-                    queryURL = "https://api.foursquare.com/v2/venues/explore?near=" + city + "&client_id=0RL33EADN1AF1SNBF34VNKWE5ELLR2UJYYGXIPLISZCDSUEC&client_secret=LADCA322VPVXK4OD4BVAKTXHY1KGFIGJFM3ROSKIF4KYXOCU&query=" + search + "&v=20180711";
+                    queryURL = "https://api.foursquare.com/v2/venues/explore?near=" + city + "&client_id=" + clientID + "&client_secret=" + clientSecret + "&query=" + search + "&v=20180711";
                     console.log(queryURL);
                     $.ajax({
                         url: queryURL,
                         method: "GET"
                     }).then(function (response) {
-                        var result = response.response.groups[0].items;
-                        console.log(result);
-                        //Dynamically create divs and btn links for search results.
-                        for (var j = 0; j < 5; j++) {
-                            var resultDiv = $("<div>")
-                            var resultDisplay = $("<button>" + result[j].snippet + "</button>");
-                            resultDisplay.addClass("btn btn-link");
-                            resultDiv.prepend(resultDisplay);
-                            $("#result-display").append(resultDiv);
-                        }
+                        console.log(response);
+                        var venueID = response.response.groups[0].items[0].venue.id;
+                        console.log(venueID);
+
+                        queryURL = "https://api.foursquare.com/v2/venues/" + venueID + "?client_id=" + clientID + "&client_secret=" + clientSecret + "&v=20180711";
+                        console.log(queryURL)
+                        $.ajax({
+                            url: queryURL,
+                            method: "GET"
+                        }).then(function (response) {
+                            var result1 = response.response;
+                            console.log(result1);
+                            var site = result1.url;
+
+                            //     var apiKEY1 = "X";
+                            //     queryURL = "y" + response[i].venues.id; 
+
+                            //         $.ajax
+                            //    response[i].venues.id 
+                            // }  
+                            // var x = response[0].venues.id;
+                            //  longitude = response.results[0].locations[0].displayLatLng.lat;
+                            //     latitude = response.results[0].locations[0].displayLatLng.lng;
+                            //     console.log(longitude);
+                            //     console.log("latitude" + latitude);
+
+                            //     var APIkey1 = "d38593be2d85a2092953fb7189767bc9"
+                            //     queryURL1 = "https://api.darksky.net/forecast/" + APIkey1 + "/" + latitude + "," + longitude;
+                            //     // queryURL1 = "https://api.darksky.net/forecast/14054edeb95fa12dc60adb341b933334/" + latitude + "," + longitude;
+                            //     console.log(queryURL1);
+                            //     $.ajax({
+                            //         url: queryURL1,
+                            //         method: "GET"
+                            //     }).then(function (response) {
+                            //         var result1 = response;
+                            //         console.log(result1);
+                            //         //Dynamically create divs and btn links for search results.
+                            //         for (var j = 0; j < 5; j++) {
+                            //             var resultDiv = $("<div>")
+                            //             var resultDisplay = $("<button>" + result[j].snippet + "</button>");
+                            //             resultDisplay.addClass("btn btn-link");
+                            //             resultDiv.prepend(resultDisplay);
+                            //             $("#result-display").append(resultDiv);
+                            //         }
+                            //     });
+                        });
                     });
+
                 }
             } else {
                 alert("You did not type in the text field! Please try again.");
@@ -265,6 +275,34 @@ $(document).ready(function () {
         });
     };
 
+    function showItinerary() {
+        $("#confirm-list").on("click", function () {
+
+            landing.hide();
+            planning.hide();
+            itinerary.show();
+
+            for (var i = 0; i < total; i++) {
+                var listDiv = $("<div>");
+                var listButton = $("<button style='background-color: #4B4B4B; width: 200px; display: block; margin:auto'>");
+
+                // listDiv.addClass("row");
+                listButton.text("Day " + (i+1)).attr("data-day", (i+1)).addClass("btn btn-secondary");
+                listDiv.addClass("col-3");
+                listDiv.append(listButton);
+                $("#wrapper").append(listDiv);
+            }
+        })
+    }
+
+    function nextDay() {
+        $("#next-day").on("click", function() {
+            planning.show();
+            itinerary.hide();
+            dayCounter++;
+        })
+    }
+
     $("#open-advanced").on("click", function () {
         searchAdvanced.show();
         searchGeneral.hide();
@@ -283,7 +321,9 @@ $(document).ready(function () {
         $("#adv-disclaim").show();
     });
 
+    nextDay();
+    showItinerary();
     displayWeather();
     runGeneral();
-        // runAdvanced();
+    runAdvanced();
 });
