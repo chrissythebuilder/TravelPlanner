@@ -14,45 +14,46 @@ $(document).ready(function () {
     var dataRef = firebase.database();
 
     // Define global variables
-        // Sections
-        var planning = $("#planning");
-        var landing = $("#landing");
-        var itinerary = $("#itinerary");
-        // Planning page search field IDs
-        var destination = $("#destination");
-        var searchGeneral = $("#general-search");
-        var searchAdvanced = $("#advanced-search");
-        // Search buttons 
-        var submit2 = $("#submit2");
-        var genItem = $("#gen-item");
-        var advItem = $("#adv-item");
-        // Header location variable
-        var nowDestination = $("#now-destination");
-        // Search field values
-        var search;
-        var inputGeneral;
-        var inputAdvanced;
-        var fromDate;
-        var toDate;
-        var firstDay;
-        var lastDay;
-        var totalDays;
-        var d; // stores destination value
-        var city; // stores destination value from 'd'
-        var dayCounter = 1;
-        // AJAX call variables
-        var queryURL;
-        // Temperature display variables
-        var maxTemp;
-        var minTemp;
-        var icon;
-        var description;
-        var currentDate;
-        // Result display variables
-        var site;
-        var image;
-        var description;
-        var rating;
+    // Sections
+    var planning = $("#planning");
+    var landing = $("#landing");
+    var itinerary = $("#itinerary");
+    // Planning page search field IDs
+    var destination = $("#destination");
+    var searchGeneral = $("#general-search");
+    var searchAdvanced = $("#advanced-search");
+    // Search buttons 
+    var submit2 = $("#submit2");
+    var genItem = $("#gen-item");
+    var advItem = $("#adv-item");
+    // Header location variable
+    var nowDestination = $("#now-destination");
+    // Search field values
+    var search;
+    var inputGeneral;
+    var inputAdvanced;
+    var fromDate;
+    var toDate;
+    var firstDay;
+    var lastDay;
+    var totalDays;
+    var d; // stores destination value
+    var city; // stores destination value from 'd'
+    var dayCounter = 1;
+    // AJAX call variables
+    var queryURL;
+    // Temperature display variables
+    var maxTemp;
+    var minTemp;
+    var icon;
+    var description;
+    var currentDate;
+    // Result display variables
+    var site;
+    var image;
+    var description;
+    var rating;
+    var tips;
 
     // To hide the opening fields.
     landing.show();
@@ -147,7 +148,6 @@ $(document).ready(function () {
         });
     };
 
-
     // To run the General search, when the genItem button is clicked.
     function runGeneral() {
         // Add onclick even for the submit "add-item" button.
@@ -200,24 +200,96 @@ $(document).ready(function () {
                                 console.log(image);
                                 console.log(rating);
                                 var resultDiv = $("<div style='display:block; float:left' class='col col-4'>");
-                                var h5 = $("<h5>");
-                                var h7 = $("<h7>")
-                                var image = $("<img style='height: auto; width:100%; max-width: 360px'><a href=" + site + "></a>");
-                                image.addClass("travelImages").attr("data-name", name);
-                                h5.text("Name: " + name)
+                                var btn = $("<button class='btn btn-link'>");
+                                var h7 = $("<h7>");
+                                // var image = $("");
+                                var anchor = $("<a target='_blank' href=" + site + "><img src=" + img + " style='height: auto; width:100%; max-width: 360px' class='travelImages'></a>");
+                                btn.text(name);
                                 h7.text("Rating: " + rating);
-                                image.attr({
-                                    "src": img,
-                                })
-                                console.log();
-                                resultDiv.prepend(h5);
+                                btn.attr({
+                                    "data-name": name
+                                });
+                                console.log(image);
+                                resultDiv.prepend(btn);
                                 resultDiv.append(h7);
-                                resultDiv.append(image);
+                                resultDiv.append(anchor);
                                 $("#images-display").prepend(resultDiv);
                             });
                         }
                     });
+                    // btn.on("click", function() {
 
+                    //     search = $(this).attr("data-name");
+
+                    //     var keySelect = Math.floor(Math.random() * key.length);
+                    //     var clientID = key[keySelect]['clientID'];
+                    //     var clientSecret = key[keySelect]['clientSecret'];
+
+                    //     queryURL = "https://api.foursquare.com/v2/venues/explore?near=" + city + "&client_id=" + clientID + "&client_secret=" + clientSecret + "&query=" + search + "&limit=5&v=20180711";
+                    //     $.ajax({
+                    //         url: queryURL,
+                    //         method: "GET"
+                    //     }).then(function (response) {
+                    //         var venueID = response.response.groups[0].items[0].venue.id;
+                    //         console.log(venueID);
+
+                    //         // Queries for description, using 4Square "Venue Details" URL
+                    //         queryURL1 = "https://api.foursquare.com/v2/venues/" + venueID + "?client_id=" + clientID + "&client_secret=" + clientSecret + "&limit=4&v=20180711";
+                    //         console.log(queryURL1)
+                    //         $.ajax({
+                    //             url: queryURL1,
+                    //             method: "GET"
+                    //         }).then(function (response) {
+                    //             var result = response.response.venue;
+                    //             console.log(result);
+                    //             description = result.description;
+                    //             tips = result.tips.groups[0].items[0].text;
+                    //             rating = result.rating;
+                    //             var ratingDiv = $("<div>");
+                    //             var descriptionDiv = $("<div>");
+                    //             var reviewDiv = $("<div>");
+                    //             var h3 = $("<h3 class='text-center'>");
+                    //             var p = $("<p>");
+                    //             var h5 = $("<h5>");
+                    //             h3.text("Rating: " + rating);
+                    //             p.text("Description: " + description);
+                    //             h5.text("Tips: " + tips);
+                    //             ratingDiv.append(h3);
+                    //             descriptionDiv.append(p);
+                    //             reviewDiv.append(h5);
+                    //             $("#rating-display").prepend(ratingDiv);
+                    //             $("#description-display").prepend(descriptionDiv);
+                    //             $("#reviews-display").prepend(reviewDiv);
+                    //         });
+
+                    //         // Queries for photos, using Google Images API (limited to 100 Queries per day).
+                    //         var APIkey = "AIzaSyBMHhF1IhDFYqU-cjBf9YhaoTpDCB27lzI";
+                    //         var cx = "000852579600713817389:mvwf8b9vrdi";
+
+                    //         queryURL2 = "https://www.googleapis.com/customsearch/v1?key=" + APIkey + "&cx=" + cx + "&searchType=image&num=5&q=" + search;
+
+                    //         $.ajax({
+                    //             url: queryURL2,
+                    //             method: "GET"
+                    //         }).then(function (response) {
+                    //             var result = response.items;
+                    //             console.log(result);
+
+                    //             // Dynamically create divs and img tags for the images queried.
+                    //             for (var i = 0; i < result.length; i++) {
+                    //                 var imageDiv = $("<div style='display:block; float:left' class='col col-3'>");
+                    //                 var image = $("<img style='height: auto; width:100%; max-width: 360px'>");
+                    //                 image.addClass("travelImages");
+                    //                 image.attr({
+                    //                     "src": result[i].link,
+                    //                 })
+                    //                 console.log(result[i].link);
+                    //                 imageDiv.prepend(image);
+                    //                 $("#images-display").prepend(imageDiv);
+                    //             }
+                    //         });
+                    //     });
+                    // });
                 }
             } else {
                 alert("You did not type in the text field! Please try again.");
@@ -234,8 +306,11 @@ $(document).ready(function () {
 
             inputGeneral = $("#general-input").val("");
             inputAdvanced = $("#advanced-input").val().trim();
-            $("#images-display").empty();
             $("#result-display").empty();
+            $("#rating-display").empty();
+            $("#description-display").empty();
+            $("#images-display").empty();
+            $("#reviews-display").empty();
 
             // Main test: 1. Did the user input anything in to either text boxes? 2. Is the value < 5 characters?  
             if (inputAdvanced !== "") {
@@ -244,33 +319,76 @@ $(document).ready(function () {
                     // change alert to modal.
                 } else {
                     search = inputAdvanced;
+                    localStorage.setItem("search", search);
                     $("#advanced-input").val("");
 
-                    var APIkey = "AIzaSyBMHhF1IhDFYqU-cjBf9YhaoTpDCB27lzI";
-                    var cx = "000852579600713817389:mvwf8b9vrdi";
+                    var keySelect = Math.floor(Math.random() * key.length);
+                    var clientID = key[keySelect]['clientID'];
+                    var clientSecret = key[keySelect]['clientSecret'];
 
-                    // Google Search API is limited to 100 Queries per day.***** This is an issue.
-                    queryURL = "https://www.googleapis.com/customsearch/v1?key=" + APIkey + "&cx=" + cx + "&searchType=image&num=10&q=" + search;
-
+                    queryURL = "https://api.foursquare.com/v2/venues/explore?near=" + city + "&client_id=" + clientID + "&client_secret=" + clientSecret + "&query=" + search + "&limit=5&v=20180711";
                     $.ajax({
                         url: queryURL,
                         method: "GET"
                     }).then(function (response) {
-                        var result = response.items;
-                        console.log(result);
+                        var venueID = response.response.groups[0].items[0].venue.id;
+                        console.log(venueID);
 
-                        // Dynamically create divs and img tags for the images queried.
-                        for (var i = 0; i < result.length; i++) {
-                            var imageDiv = $("<div style='display:block; float:left' class='col col-3'>");
-                            var image = $("<img style='height: auto; width:100%; max-width: 360px'>");
-                            image.addClass("travelImages");
-                            image.attr({
-                                "src": result[i].link,
-                            })
-                            console.log(result[i].link);
-                            imageDiv.prepend(image);
-                            $("#images-display").prepend(imageDiv);
-                        }
+                        // Queries for description, using 4Square "Venue Details" URL
+                        queryURL1 = "https://api.foursquare.com/v2/venues/" + venueID + "?client_id=" + clientID + "&client_secret=" + clientSecret + "&limit=4&v=20180711";
+                        console.log(queryURL1)
+                        $.ajax({
+                            url: queryURL1,
+                            method: "GET"
+                        }).then(function (response) {
+                            var result = response.response.venue;
+                            console.log(result);
+                            description = result.description;
+                            tips = result.tips.groups[0].items[0].text;
+                            rating = result.rating;
+                            var ratingDiv = $("<div>");
+                            var descriptionDiv = $("<div>");
+                            var reviewDiv = $("<div>");
+                            var h3 = $("<h3 class='text-center'>");
+                            var p = $("<p>");
+                            var h5 = $("<h5>");
+                            h3.text("Rating: " + rating);
+                            p.text("Description: " + description);
+                            h5.text("Tips: " + tips);
+                            ratingDiv.append(h3);
+                            descriptionDiv.append(p);
+                            reviewDiv.append(h5);
+                            $("#rating-display").prepend(ratingDiv);
+                            $("#description-display").prepend(descriptionDiv);
+                            $("#reviews-display").prepend(reviewDiv);
+                        });
+
+                        // Queries for photos, using Google Images API (limited to 100 Queries per day).
+                        var APIkey = "AIzaSyBMHhF1IhDFYqU-cjBf9YhaoTpDCB27lzI";
+                        var cx = "000852579600713817389:mvwf8b9vrdi";
+
+                        queryURL2 = "https://www.googleapis.com/customsearch/v1?key=" + APIkey + "&cx=" + cx + "&searchType=image&num=5&q=" + search;
+
+                        $.ajax({
+                            url: queryURL2,
+                            method: "GET"
+                        }).then(function (response) {
+                            var result = response.items;
+                            console.log(result);
+
+                            // Dynamically create divs and img tags for the images queried.
+                            for (var i = 0; i < result.length; i++) {
+                                var imageDiv = $("<div style='display:block; float:left' class='col col-3'>");
+                                var image = $("<img style='height: auto; width:100%; max-width: 360px'>");
+                                image.addClass("travelImages");
+                                image.attr({
+                                    "src": result[i].link,
+                                })
+                                console.log(result[i].link);
+                                imageDiv.prepend(image);
+                                $("#images-display").prepend(imageDiv);
+                            }
+                        });
                     });
                 }
             } else {
@@ -304,7 +422,19 @@ $(document).ready(function () {
         $("#next-day").on("click", function () {
             planning.show();
             itinerary.hide();
+            $("#list-display").empty();
             dayCounter++;
+        })
+    }
+
+    function addItem() {
+        $('#add-list').on('click', function () {
+            alert('addbtn works');
+
+            $('#list-display').append("<ol>" +
+                "<li>" + localStorage.getItem("search") + "</li>" +
+
+                "</ol>")
         })
     }
 
@@ -326,6 +456,7 @@ $(document).ready(function () {
         $("#adv-disclaim").show();
     });
 
+    addItem();
     nextDay();
     showItinerary();
     landingSubmit();
