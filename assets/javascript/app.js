@@ -14,33 +14,43 @@ $(document).ready(function () {
     var dataRef = firebase.database();
 
     // Define global variables
-    var planning = $("#planning");
-    var landing = $("#landing");
-    var itinerary = $("#itinerary");
-    var genItem = $("#gen-item");
-    var advItem = $("#adv-item");
-    var inputGeneral;
-    var inputAdvanced;
-    var search;
-    var queryURL;
-    var searchAdvanced = $("#advanced-search");
-    var searchGeneral = $("#general-search");
-    var submit2 = $("#submit2");
-    var destination = $("#destination");
-    var fromDate;
-    var toDate;
-    var firstDay;
-    var lastDay;
-    var totalDays
-    var d;
-    var dayCounter = 1;
-    var city;
-    var date = $("#date");
-    var maxTemp;
-    var minTemp;
-    var icon;
-    var description;
-    var currentDate;
+        // Sections
+        var planning = $("#planning");
+        var landing = $("#landing");
+        var itinerary = $("#itinerary");
+        // Planning page search field IDs
+        var destination = $("#destination");
+        var searchGeneral = $("#general-search");
+        var searchAdvanced = $("#advanced-search");
+        // Search buttons 
+        var submit2 = $("#submit2");
+        var genItem = $("#gen-item");
+        var advItem = $("#adv-item");
+        // Search field values
+        var search;
+        var inputGeneral;
+        var inputAdvanced;
+        var fromDate;
+        var toDate;
+        var firstDay;
+        var lastDay;
+        var totalDays;
+        var d; // stores destination value
+        var city; // stores destination value from 'd'
+        var dayCounter = 1;
+        // AJAX call variables
+        var queryURL;
+        // Temperature display variables
+        var maxTemp;
+        var minTemp;
+        var icon;
+        var description;
+        var currentDate;
+        // Result display variables
+        var site;
+        var image;
+        var description;
+        var rating;
 
     // To hide the opening fields.
     landing.show();
@@ -49,7 +59,7 @@ $(document).ready(function () {
     searchAdvanced.hide();
     $("#gen-disclaim").hide();
 
-    function displayWeather() {
+    function landingSubmit() {
         // Add onclick even for the submit "add-item" button.
         submit2.on("click", function (event) {
             event.preventDefault();
@@ -62,9 +72,9 @@ $(document).ready(function () {
             firstDay = (Date.parse(fromDate) / 1000 / 60 / 60 / 24);
             lastDay = (Date.parse(toDate) / 1000 / 60 / 60 / 24);
             totalDays = lastDay - firstDay;
-            console.log(totalDays);
             console.log(fromDate);
             console.log(toDate);
+            console.log(totalDays);
             d = destination.val().trim();
             localStorage.clear();
             localStorage.setItem("destination", d);
@@ -154,11 +164,11 @@ $(document).ready(function () {
                     search = inputGeneral;
                     $("#general-input").val("");
 
-                    var clientID = "0RL33EADN1AF1SNBF34VNKWE5ELLR2UJYYGXIPLISZCDSUEC";
-                    var clientSecret = "LADCA322VPVXK4OD4BVAKTXHY1KGFIGJFM3ROSKIF4KYXOCU";
+                    var keySelect = Math.floor(Math.random() * key.length);
+                    console.log(keySelect);
+                    var clientID = key[keySelect]['clientID'];
+                    var clientSecret = key[keySelect]['clientSecret'];
 
-                    // Google Search API is limited to 100 Queries per day.***** This is an issue.
-                    // queryURL = "https://www.googleapis.com/customsearch/v1?key=" + APIkey + "&cx=" + cx + "&searchType=image&num=10&q=" + search;
                     queryURL = "https://api.foursquare.com/v2/venues/explore?near=" + city + "&client_id=" + clientID + "&client_secret=" + clientSecret + "&query=" + search + "&v=20180711";
                     console.log(queryURL);
                     $.ajax({
@@ -166,51 +176,42 @@ $(document).ready(function () {
                         method: "GET"
                     }).then(function (response) {
                         console.log(response);
-                        var venueID = response.response.groups[0].items[0].venue.id;
-                        console.log(venueID);
+                        for (var i = 0; i < 6; i++) {
+                            var venueID = response.response.groups[0].items[i].venue.id;
+                            console.log(venueID);
 
-                        queryURL = "https://api.foursquare.com/v2/venues/" + venueID + "?client_id=" + clientID + "&client_secret=" + clientSecret + "&v=20180711";
-                        console.log(queryURL)
-                        $.ajax({
-                            url: queryURL,
-                            method: "GET"
-                        }).then(function (response) {
-                            var result1 = response.response;
-                            console.log(result1);
-                            var site = result1.url;
-
-                            //     var apiKEY1 = "X";
-                            //     queryURL = "y" + response[i].venues.id; 
-
-                            //         $.ajax
-                            //    response[i].venues.id 
-                            // }  
-                            // var x = response[0].venues.id;
-                            //  longitude = response.results[0].locations[0].displayLatLng.lat;
-                            //     latitude = response.results[0].locations[0].displayLatLng.lng;
-                            //     console.log(longitude);
-                            //     console.log("latitude" + latitude);
-
-                            //     var APIkey1 = "d38593be2d85a2092953fb7189767bc9"
-                            //     queryURL1 = "https://api.darksky.net/forecast/" + APIkey1 + "/" + latitude + "," + longitude;
-                            //     // queryURL1 = "https://api.darksky.net/forecast/14054edeb95fa12dc60adb341b933334/" + latitude + "," + longitude;
-                            //     console.log(queryURL1);
-                            //     $.ajax({
-                            //         url: queryURL1,
-                            //         method: "GET"
-                            //     }).then(function (response) {
-                            //         var result1 = response;
-                            //         console.log(result1);
-                            //         //Dynamically create divs and btn links for search results.
-                            //         for (var j = 0; j < 5; j++) {
-                            //             var resultDiv = $("<div>")
-                            //             var resultDisplay = $("<button>" + result[j].snippet + "</button>");
-                            //             resultDisplay.addClass("btn btn-link");
-                            //             resultDiv.prepend(resultDisplay);
-                            //             $("#result-display").append(resultDiv);
-                            //         }
-                            //     });
-                        });
+                            queryURL = "https://api.foursquare.com/v2/venues/" + venueID + "?client_id=" + clientID + "&client_secret=" + clientSecret + "&v=20180711";
+                            console.log(queryURL)
+                            $.ajax({
+                                url: queryURL,
+                                method: "GET"
+                            }).then(function (response) {
+                                var result1 = response.response.venue;
+                                console.log(result1);
+                                site = result1.url;
+                                name = result1.name;
+                                img = result1.photos.groups[0].items[0].prefix + result1.photos.groups[0].items[0].user.id + result1.photos.groups[0].items[0].suffix;
+                                rating = result1.rating;
+                                console.log(site);
+                                console.log(image);
+                                console.log(rating);
+                                var resultDiv = $("<div style='display:block; float:left' class='col col-4'>");
+                                var h5 = $("<h5>");
+                                var h7 = $("<h7>")
+                                var image = $("<img style='height: auto; width:100%; max-width: 360px'><a href=" + site + "></a>");
+                                image.addClass("travelImages").attr("data-name", name);
+                                h5.text("Name: " + name)
+                                h7.text("Rating: " + rating);
+                                image.attr({
+                                    "src": img,
+                                })
+                                console.log();
+                                resultDiv.prepend(h5);
+                                resultDiv.append(h7);
+                                resultDiv.append(image);
+                                $("#images-display").prepend(resultDiv);
+                            });
+                        }
                     });
 
                 }
@@ -287,7 +288,7 @@ $(document).ready(function () {
                 var listButton = $("<button style='background-color: #4B4B4B; width: 200px; display: block; margin:auto'>");
 
                 // listDiv.addClass("row");
-                listButton.text("Day " + (i+1)).attr("data-day", (i+1)).addClass("btn btn-secondary");
+                listButton.text("Day " + (i + 1)).attr("data-day", (i + 1)).addClass("btn btn-secondary");
                 listDiv.addClass("col-3");
                 listDiv.append(listButton);
                 $("#wrapper").append(listDiv);
@@ -296,7 +297,7 @@ $(document).ready(function () {
     }
 
     function nextDay() {
-        $("#next-day").on("click", function() {
+        $("#next-day").on("click", function () {
             planning.show();
             itinerary.hide();
             dayCounter++;
@@ -323,7 +324,7 @@ $(document).ready(function () {
 
     nextDay();
     showItinerary();
-    displayWeather();
+    landingSubmit();
     runGeneral();
     runAdvanced();
 });
