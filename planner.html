@@ -29,20 +29,18 @@
 
     <!-- Set up Landing Page -->
     <div id="landing">
-        <img src="assets/images/travelling3.jpg">
-        <div id="details">
-            <h1> BCKN Trip Planner </h1>
-            <p> From Date </p>
-            <input type="date" id="fromDate">
-            <p> To Date </p>
-            <input type="date" id="toDate">
-            <p> Destination </p>
-            <input type="text" id="destination" placeholder="City, Country">
-            <br>
-            <form action="planner.html">
-                <button type="submit" class="btn btn-success" id="submit2">Time to plan!</button>
-            </form>
-        </div>
+        <p class = "signout"> <a href = "index.html"> Sign Out </a> </p>
+        <h1> BCKN Travel Planner </h1>
+        <img src="assets/images/travelling6.jpg">
+            <div id = "details">
+                <p> From Date </p>
+                <input type="date" id="fromDate"> <br>
+                <p> To Date </p>
+                <input type="date" id="toDate"> <br>
+                <p> Destination </p>
+                <input type="text" id="destination" placeholder="City, Country"> <br>
+                <button type="submit" class="btn btn-success" id = "submit2">Time to plan!</button>
+            </div>
     </div>
 
     <!-- Modal -->
@@ -68,8 +66,11 @@
 
     <!-- Set up Planner Page -->
     <div id="planning">
+        <p class = "signout"> <a href = "index.html"> Sign Out </a> </p>
+        <h1> BCKN Travel Planner </h1>
         <div id="title">
-            <h2>Planner Page</h2>
+            <h2>Welcome to <span id = "now-destination"> </span>! We are excited to assist in planning your trip.</h2>
+            
             <p>We would like to officially welcome you to BCKN Trip Planner Builder's page. In here, you will have the opportunity
                 to start building your customized list of points of interest for the selected date. Once done, confirm your
                 list with the button below so you can see all the lists you have built as well as start planning activities
@@ -80,12 +81,20 @@
                     participate in. </span>
             </p>
         </div>
+<!-- 
+        <div id = "emojis">
+            <img src = "assets/images/airplane.png">
+            <img src = "assets/images/ship.png">
+            <img src = "assets/images/bus.png">
+            <img src = "assets/images/bicycle.png">
+        </div> -->
+
         <div id="weather-display"></div>
 
-        <div class="alert alert-danger" id="adv-disclaim">
+        <div class="alert" id="adv-disclaim">
             <p id="open-advanced">Click here if you already know the name of the place you are looking for!</p>
         </div>
-        <div class="alert alert-success" id="gen-disclaim">
+        <div class="alert" id="gen-disclaim">
             <p id="open-general">Click here for a general search.</p>
         </div>
         <div class="form-group" id="general-search">
@@ -96,6 +105,19 @@
             <input type="text" class="form-control" id="advanced-input" placeholder="Advanced search...">
             <button class="btn btn-primary" id="adv-item">Search</button>
         </div>
+        
+        
+        <!-- <div class="alert alert-success" id="gen-disclaim">
+            <p id="open-general">Click here for a general search.</p>
+        </div>
+        <div class="form-group" id="general-search">
+            <input type="text" class="form-control" id="general-input" placeholder="General search...">
+            <button class="btn btn-primary" id="gen-item">Search</button>
+        </div>
+        <div class="form-group" id="advanced-search">
+            <input type="text" class="form-control" id="advanced-input" placeholder="Advanced search...">
+            <button class="btn btn-primary" id="adv-item">Search</button>
+        </div> -->
 
         <div id="result-display"></div>
 
@@ -117,6 +139,8 @@
     <div class="banner"></div>
 
     <div id="itinerary">
+        <p class = "signout"> <a href = "index.html" id="signOut"> Sign Out </a> </p>
+        <h1> BCKN Travel Planner </h1>
         <div id="wrapper" class="row">
         </div>
 
@@ -129,6 +153,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="assets/javascript/keys.js"></script>
     <script src="assets/javascript/app.js"></script>
+
+    <script>
+
+    // document.getElementById('signOut').addEventListener('click', function(event) {
+    //     window.location = "https://bethgmariam.github.io/signinTestFirebase/";
+    //   });
+    </script>
+
 </body>
 
 

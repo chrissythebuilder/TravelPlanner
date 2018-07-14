@@ -26,6 +26,8 @@ $(document).ready(function () {
         var submit2 = $("#submit2");
         var genItem = $("#gen-item");
         var advItem = $("#adv-item");
+        // Header location variable
+        var nowDestination = $("#now-destination");
         // Search field values
         var search;
         var inputGeneral;
@@ -84,6 +86,8 @@ $(document).ready(function () {
             city = localStorage.getItem("destination");
             console.log(total);
             console.log(city);
+
+            nowDestination.text(d);
 
             // Main test: 1. Did the user input anything in to either text boxes? 2. Is the value < 5 characters?  
             if (destination.val() !== "") {
