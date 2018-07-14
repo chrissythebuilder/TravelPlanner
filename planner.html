@@ -146,7 +146,7 @@
 
     firebase.initializeApp(config);
 
-//     var database = firebase.database();
+    var database = firebase.database();
 
 // function writeUserData(userId, name, email, imageUrl) {
 //   firebase.database().ref('users/' + userId).set({
@@ -173,7 +173,7 @@ $("#adv-item").on("click", function(event) {
         var advancedSearch=$('#advanced-input').val().trim();  
 
     // push user  input to firebase.
-    database.ref().set({
+    database.ref('/users/' + userId).set({
         user:userId,
         genSearch:generalSearch,
         advSearch:advancedSearch
@@ -200,13 +200,13 @@ $("#adv-item").on("click", function(event) {
 
 
 
-    database.ref().on("child_added", function(childSnapshot) {
+    database.ref('/users/' + userId).on("child_added", function(childSnapshot) {
 
 
       var tempuser=childSnapshot.val().user;
       var tempgenSearch=childSnapshot.val().genSearch;
       var tempadvSearch=childSnapshot.val().advSearch;
-      var tempkey=childSnapshot.key;
+    //   var tempkey=childSnapshot.key;
 
 
       $('#list-display"').append("<ol>" +
