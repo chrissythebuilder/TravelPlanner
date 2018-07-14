@@ -128,6 +128,41 @@
     <!-- jQuery Library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="assets/javascript/app.js"></script>
+
+<script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyD3GtRS1N5UxrzvxA1i8XV0babAG61zf9Q",
+      authDomain: "groupproject1-e81bf.firebaseapp.com",
+      databaseURL: "https://groupproject1-e81bf.firebaseio.com",
+      projectId: "groupproject1-e81bf",
+      storageBucket: "groupproject1-e81bf.appspot.com",
+      messagingSenderId: "825404731161"
+  };
+
+    firebase.initializeApp(config);
+
+    var database = firebase.database();
+
+    function writeUserData(userId, name, email) {
+  firebase.database().ref('users/' + userId).set({
+    username: name,
+    email: email
+    //some more user data
+  });
+}
+
+writeUserData(1,'beth','beth.gmariam@gmail.com');
+
+</script>
+
+
+
+
+
+
+
+
 </body>
 
 
