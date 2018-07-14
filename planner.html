@@ -9,13 +9,23 @@
     <title> Travel Planner </title>
 
     <link href="assets/css/reset.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Faster+One|PT+Sans:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Faster+One|PT+Sans:400,700" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+
 
     <!-- Bootstrap Library -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
         crossorigin="anonymous">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
     <link href="assets/css/style.css" rel="stylesheet">
+
+
     <!-- Firebase Library -->
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
 
@@ -39,7 +49,8 @@
                 <input type="date" id="toDate"> <br>
                 <p> Destination </p>
                 <input type="text" id="destination" placeholder="City, Country"> <br>
-                <button type="submit" class="btn btn-success" id = "submit2">Time to plan!</button>
+                <button id = "submit2" class="btn waves-effect waves-light" type="submit" name="action">Let's go!<i class="material-icons right">send</i>
+                </button>
             </div>
     </div>
 
@@ -81,13 +92,6 @@
                     participate in. </span>
             </p>
         </div>
-<!-- 
-        <div id = "emojis">
-            <img src = "assets/images/airplane.png">
-            <img src = "assets/images/ship.png">
-            <img src = "assets/images/bus.png">
-            <img src = "assets/images/bicycle.png">
-        </div> -->
 
         <div id="weather-display"></div>
 
@@ -131,9 +135,7 @@
 
         <div id="list-display"></div>
         <br>
-        <div class="form-group">
-            <button class="btn btn-success" id="add-list">Add Item</button>
-        </div>
+        <a id="add-list" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
         <div class="form-group">
             <button class="btn btn-success" id="confirm-list">Confirm List</button>
         </div>
