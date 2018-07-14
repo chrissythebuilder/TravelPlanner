@@ -33,6 +33,7 @@ return firebase.database().ref('/users/' + userId).once('value').then(function(s
 
 
 $("#adv-item").on("click", function(event) {
+    alert('btn works')
 
         event.preventDefault();
         var generalSearch=$('#general-input').val().trim();  
