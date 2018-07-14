@@ -29,6 +29,7 @@
 
     <!-- Set up Landing Page -->
     <div id="landing">
+        <p id = "signout"> <a href = "index.html"> Sign Out </a> </p>
         <h1> BCKN Travel Planner </h1>
         <img src="assets/images/travelling6.jpg">
             <div id = "details">
@@ -65,8 +66,10 @@
 
     <!-- Set up Planner Page -->
     <div id="planning">
+        <h1> BCKN Travel Planner </h1>
         <div id="title">
-            <h2>Planner Page</h2>
+            <h2>Welcome to <span id = "now-destination"> </span>! We are excited to assist in planning your trip.</h2>
+            
             <p>We would like to officially welcome you to BCKN Trip Planner Builder's page. In here, you will have the opportunity
                 to start building your customized list of points of interest for the selected date. Once done, confirm your
                 list with the button below so you can see all the lists you have built as well as start planning activities
@@ -77,12 +80,20 @@
                     participate in. </span>
             </p>
         </div>
+<!-- 
+        <div id = "emojis">
+            <img src = "assets/images/airplane.png">
+            <img src = "assets/images/ship.png">
+            <img src = "assets/images/bus.png">
+            <img src = "assets/images/bicycle.png">
+        </div> -->
+
         <div id="weather-display"></div>
 
-        <div class="alert alert-danger" id="adv-disclaim">
+        <div class="alert" id="adv-disclaim">
             <p id="open-advanced">Click here if you already know the name of the place you are looking for!</p>
         </div>
-        <div class="alert alert-success" id="gen-disclaim">
+        <div class="alert" id="gen-disclaim">
             <p id="open-general">Click here for a general search.</p>
         </div>
         <div class="form-group" id="general-search">
@@ -93,6 +104,19 @@
             <input type="text" class="form-control" id="advanced-input" placeholder="Advanced search...">
             <button class="btn btn-primary" id="adv-item">Search</button>
         </div>
+        
+        
+        <!-- <div class="alert alert-success" id="gen-disclaim">
+            <p id="open-general">Click here for a general search.</p>
+        </div>
+        <div class="form-group" id="general-search">
+            <input type="text" class="form-control" id="general-input" placeholder="General search...">
+            <button class="btn btn-primary" id="gen-item">Search</button>
+        </div>
+        <div class="form-group" id="advanced-search">
+            <input type="text" class="form-control" id="advanced-input" placeholder="Advanced search...">
+            <button class="btn btn-primary" id="adv-item">Search</button>
+        </div> -->
 
         <div id="result-display"></div>
 

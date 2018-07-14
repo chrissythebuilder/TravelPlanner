@@ -1,3 +1,35 @@
+/* Main Page */
+
+#creteRound{
+    font-family: 'Crete Round', seri;
+    text-align:center;
+    color:white;
+    font-size:80px;
+  }
+
+  #patuaOne{
+    font-family: 'Patua One', cursive;
+    text-align:center;
+    color:white;
+    font-size:80px;
+
+  }
+
+#fasterOne{
+  font-family: 'Faster One', cursive;
+  /* color:#D84B37; */
+  color:white;
+  text-align:center;
+  font-size:80px;
+  margin-top:25px;
+  margin-bottom:50px;
+
+}
+
+img{
+  height:25%;
+}
+
 /* Page Display Starts Here */
 
 #landing img {
@@ -20,7 +52,7 @@ h1 {
 	font-family: 'Faster One', cursive;
 	color: white;
 	background-color: rgba(213,65,55,.8);
-	transform: skewX(20deg);
+	/* transform: skewX(20deg); */
 }
 
 p {
@@ -50,6 +82,22 @@ input {
 	border-radius: 100px;
 	border: solid 10px green;
 	font-size: 110%;
+}
+
+#signout {
+	position: absolute;
+	right: 10px;
+	top: 0;
+}
+
+#signout a {
+	text-decoration: none;
+	color: black
+}
+
+#signout a:hover {
+	text-decoration: line-through;
+	color: grey;
 }
 
 @media only screen and (max-width: 980px) {
@@ -104,8 +152,9 @@ header {
 
 #title h2 {
 	font-family: 'PT Sans', sans-serif;
-	font-size: 200%;
+	font-size: 150%;
 	font-weight: 700;
+	text-align: center;
 }
 
 #title p {
@@ -130,6 +179,10 @@ header {
 	margin: 30px 0;
 }
 
+#add-info {
+	position: relative;
+}
+
 .travelImages {
 	border-radius: 7px;
 	margin-top: 30px;
@@ -143,17 +196,20 @@ header {
 	text-decoration: none;
 	background: #D54317;
 	color:white;
+	text-align: center;
+	border-radius: 50px;
 }
 
 #open-general {
 	text-decoration: none;
 	background: #D54317;
 	color:white;
+	text-align: center;
+	border-radius: 50px;
 }
 
-#open-advanced:hover {
-	background: #4B4B4B;
-	color: #e5e5e5;
-	padding: 10px 10px;
+#weather-display {
+	text-align: center;
 }
+
 

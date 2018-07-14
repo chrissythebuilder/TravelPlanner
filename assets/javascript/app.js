@@ -41,6 +41,7 @@ $(document).ready(function () {
     var icon;
     var description;
     var currentDate;
+    var nowDestination = $("#now-destination");
 
     // To hide the opening fields.
     landing.show();
@@ -74,6 +75,8 @@ $(document).ready(function () {
             city = localStorage.getItem("destination");
             console.log(total);
             console.log(city);
+
+            nowDestination.text(d);
 
             // Main test: 1. Did the user input anything in to either text boxes? 2. Is the value < 5 characters?  
             if (destination.val() !== "") {
