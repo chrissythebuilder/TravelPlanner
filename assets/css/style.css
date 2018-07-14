@@ -84,18 +84,18 @@ input {
 	font-size: 110%;
 }
 
-#signout {
+.signout {
 	position: absolute;
 	right: 10px;
 	top: 0;
 }
 
-#signout a {
+.signout a {
 	text-decoration: none;
 	color: black
 }
 
-#signout a:hover {
+.signout a:hover {
 	text-decoration: line-through;
 	color: grey;
 }
