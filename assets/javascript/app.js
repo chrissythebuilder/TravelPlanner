@@ -239,6 +239,7 @@ $(document).ready(function () {
                     // change alert to modal.
                 } else {
                     search = inputAdvanced;
+                    localStorage.setItem("search", search);
                     $("#advanced-input").val("");
 
                     var APIkey = "AIzaSyBMHhF1IhDFYqU-cjBf9YhaoTpDCB27lzI";
@@ -327,3 +328,30 @@ $(document).ready(function () {
     runGeneral();
     runAdvanced();
 });
+
+
+
+    $('#add-list').on('click',function(){
+        alert('addbtn works');
+
+    $('#list-display').append("<ol>" +
+        "<li>" + localStorage.getItem("search") + "</li>" +
+
+        "</ol>")
+})
+
+
+
+
+
+
+
+
+// $('#confirm-list').on('click',function(){
+
+//     $()
+
+
+// })
+
+
