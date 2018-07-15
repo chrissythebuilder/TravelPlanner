@@ -15,8 +15,10 @@ $(document).ready(function () {
 
     // Define global variables
     // Sections
-    var planning = $("#planning");
     var landing = $("#landing");
+    var charLimit = $("#charLimit");
+    var charEmpty = $("#charEmpty");
+    var planning = $("#planning");
     var itinerary = $("#itinerary");
     // Planning page search field IDs
     var destination = $("#destination");
@@ -54,9 +56,13 @@ $(document).ready(function () {
     var description;
     var rating;
     var tips;
+    // Array list variables
+    var listArray=[];
 
     // To hide the opening fields.
     landing.show();
+    charLimit.hide();
+    charEmpty.hide();
     planning.hide();
     itinerary.hide();
     searchAdvanced.hide();
@@ -66,9 +72,6 @@ $(document).ready(function () {
         // Add onclick even for the submit "add-item" button.
         submit2.on("click", function (event) {
             event.preventDefault();
-
-            landing.hide();
-            planning.show();
 
             fromDate = $("#fromDate").val().trim();
             toDate = $("#toDate").val().trim();
@@ -93,9 +96,13 @@ $(document).ready(function () {
             // Main test: 1. Did the user input anything in to either text boxes? 2. Is the value < 5 characters?  
             if (destination.val() !== "") {
                 if (destination.val().length < 5) {
-                    alert("You must type at least 5 characters.");
-                    // change alert to modal.
+                    charLimit.addClass("show");
+                    charLimit.show();
+                    return;
                 } else {
+                    landing.hide();
+                    planning.show();
+
                     search = city;
                     console.log(search);
                     destination.val("");
@@ -123,7 +130,7 @@ $(document).ready(function () {
 
                         var weatherDiv = $("<div style='display:block;' class='col col-3'>");
                         var date = $("<h5 class='text-center'>");
-                        var data = parseFloat(((maxTemp + minTemp) / 2).toFixed(4));
+                        var data = parseFloat(((maxTemp + minTemp) / 2).toFixed(1));
                         console.log(data);
                         var p = $("<p class='text-center'>");
                         var image = $("<img style='display:block; margin: auto;'>");
@@ -142,8 +149,9 @@ $(document).ready(function () {
                     })
                 }
             } else {
-                alert("You did not type in the text field! Please try again.");
-                // insert modal here ********
+                charEmpty.addClass("show");
+                charEmpty.show();
+                return;
             }
         });
     };
@@ -162,8 +170,9 @@ $(document).ready(function () {
             // Main test: 1. Did the user input anything in to either text boxes? 2. Is the value < 5 characters?  
             if (inputGeneral !== "") {
                 if ($("#general-input").val().length < 5) {
-                    alert("You must type at least 5 characters.");
-                    // change alert to modal.
+                    charLimit.addClass("show");
+                    charLimit.show();
+                    return;
                 } else {
                     search = inputGeneral;
                     $("#general-input").val("");
@@ -292,8 +301,9 @@ $(document).ready(function () {
                     // });
                 }
             } else {
-                alert("You did not type in the text field! Please try again.");
-                // insert modal here ********
+                charEmpty.addClass("show");
+                charEmpty.show();
+                return;
             }
         });
     };
@@ -315,8 +325,9 @@ $(document).ready(function () {
             // Main test: 1. Did the user input anything in to either text boxes? 2. Is the value < 5 characters?  
             if (inputAdvanced !== "") {
                 if ($("#advanced-input").val().length < 5) {
-                    alert("You must type at least 5 characters.");
-                    // change alert to modal.
+                    charLimit.addClass("show");
+                    charLimit.show();
+                    return;
                 } else {
                     search = inputAdvanced;
                     localStorage.setItem("search", search);
@@ -367,7 +378,7 @@ $(document).ready(function () {
                         var APIkey = "AIzaSyBMHhF1IhDFYqU-cjBf9YhaoTpDCB27lzI";
                         var cx = "000852579600713817389:mvwf8b9vrdi";
 
-                        queryURL2 = "https://www.googleapis.com/customsearch/v1?key=" + APIkey + "&cx=" + cx + "&searchType=image&num=5&q=" + search;
+                        queryURL2 = "https://www.googleapis.com/customsearch/v1?key=" + APIkey + "&cx=" + cx + "&searchType=image&num=1&q=" + search;
 
                         $.ajax({
                             url: queryURL2,
@@ -392,8 +403,9 @@ $(document).ready(function () {
                     });
                 }
             } else {
-                alert("You did not type in the text field! Please try again.");
-                // insert modal here ********
+                charEmpty.addClass("show");
+                charEmpty.show();
+                return;
             }
         });
     };
@@ -418,6 +430,19 @@ $(document).ready(function () {
         })
     }
 
+    // Add's items to list display
+    function addItem() {
+        $('#add-list').on('click', function () {
+
+            $('#list-display').append("<ul>" +
+                "<li>" + localStorage.getItem("search") + "</li>" +
+
+                "</ul>")
+            listArray.push(localStorage.getItem("search"));
+        })
+    }
+
+    // Allows user to move on to next day of planning
     function nextDay() {
         $("#next-day").on("click", function () {
             planning.show();
@@ -427,17 +452,16 @@ $(document).ready(function () {
         })
     }
 
-    function addItem() {
-        $('#add-list').on('click', function () {
-            alert('addbtn works');
+    // Modal button events
+    $("#charEmptyBtn").on("click", function () {
+        charEmpty.hide();
+    });
 
-            $('#list-display').append("<ol>" +
-                "<li>" + localStorage.getItem("search") + "</li>" +
+    $("#charLimitBtn").on("click", function () {
+        charLimit.hide();
+    });
 
-                "</ol>")
-        })
-    }
-
+    // Search (general and advanced) buttons on click events
     $("#open-advanced").on("click", function () {
         searchAdvanced.show();
         searchGeneral.hide();
@@ -455,6 +479,8 @@ $(document).ready(function () {
         $("#gen-disclaim").hide();
         $("#adv-disclaim").show();
     });
+
+
 
     addItem();
     nextDay();

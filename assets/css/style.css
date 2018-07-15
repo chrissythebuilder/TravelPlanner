@@ -220,4 +220,13 @@ header {
 	margin-bottom: 20px;
 }
 
+.modal {
+	background-color: #00000000;
+}
+
+.z-depth-5, .modal {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
 
