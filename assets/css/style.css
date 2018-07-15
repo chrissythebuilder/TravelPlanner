@@ -55,7 +55,7 @@ h1 {
 
 #details {
 	float: left;
-	padding: 40px;
+	padding: 30px;
 	text-align: center;
 }
 
@@ -88,13 +88,17 @@ input {
 	font-size: 110%;
 }
 
-.signout {
+#other-options {
+	margin-top: 15px;
+}
+
+.signout-button {
 	position: absolute;
 	right: 10px;
 	top: 0;
 }
 
-.signout a {
+/* .signout a {
 	text-decoration: none;
 	color: black
 }
@@ -102,13 +106,24 @@ input {
 .signout a:hover {
 	text-decoration: line-through;
 	color: grey;
-}
+} */
 
-@media only screen and (max-width: 980px) {
+@media only screen and (max-width: 1224px) {
+
+	#landing img {
+		position: relative;
+		width: 100%;
+	}
 
 	#details {
+		position: absolute;
 		padding: 10px;
 		margin-top: -20px;
+		background-color: rgba(213, 65, 55, 0.801);	
+		top: 230px;
+		left: 400px;
+		color: white;
+		padding: 0 50px;
 	}
 
 	p {
@@ -116,23 +131,118 @@ input {
 	}
 }
 
-@media only screen and (max-width: 782px) {
+@media only screen and (max-width: 1110px) {
+
 	#landing img {
+		position: relative;
 		width: 100%;
 	}
 
 	#details {
-		margin-top: 10px;
-		margin-left: auto;
+		position: absolute;
+		padding: 10px;
+		margin-top: -20px;
+		background-color: rgba(213, 65, 55, 0.801);	
+		top: 230px;
+		left: 340px;
+		color: white;
+		padding: 0 50px;
 	}
+
+	p {
+		font-size: 100%;
+	}
+}
+
+@media only screen and (max-width: 980px) {
+
+
+	#details {
+		padding: 0 100px;
+		margin-top: -80px;
+		margin-left: -100px;
+	}
+
+	p {
+		font-size: 100%;
+	}
+}
+
+@media only screen and (max-width: 889px) {
+
+
+	#details {
+		padding: 0 100px;
+		margin-top: -80px;
+		margin-left: -120px;
+	}
+
+	p {
+		font-size: 100%;
+	}
+}
+
+@media only screen and (max-width: 871px) {
+
+	#landing img {
+		width: 60%;
+	}
+
+
+	#details {
+		padding: 0 20px;
+		margin-left: 180px;
+		margin-top: -140px;
+		background-color: transparent;
+		color: black;
+	}
+
+	p {
+		font-size: 100%;
+	}
+
+	#other-options {
+		margin-left: -700px;
+		margin-top: -50px;
+	}
+}
+
+@media only screen and (max-width: 782px) {
+	#landing img {
+		position: relative;
+		width: 100%;
+	}
+
+	#details {
+		position: absolute;
+		background-color: rgba(213, 65, 55, 0.801);	
+		left: 50px;
+		height: 380px;
+		margin-top: -80px;
+	}
+
 
 	p {
 		text-align: left;
 		padding: 0;
 	}
 
+	#other-options {
+		margin: 0 auto;
+		padding-top: 10px;
+	}
+
 	#submit2 {
 		margin: 0 auto;
+	}
+}
+
+@media only screen and (max-width: 749px) {
+	#details {
+		position: static;
+		margin-top: 10px;
+		margin-left: 0;
+		width: 100%;
 	}
 }
 
@@ -219,5 +329,6 @@ header {
 #add-list {
 	margin-bottom: 20px;
 }
+
 
 

@@ -418,6 +418,22 @@ $(document).ready(function () {
         })
     }
 
+    function signOut() {
+        $(".signout-button").on("click", function() {
+            alert("this works!");
+            event.preventDefault();
+
+            localStorage.clear();
+            destination = destination.val().trim();
+            localStorage.setItem("destination", destination);
+
+
+            alert(localStorage.getItem("destination"));
+            alert(localStorage.getItem("search"));
+            alert(parseInt(localStorage.getItem("totalDays")));
+        })
+    }
+
     function nextDay() {
         $("#next-day").on("click", function () {
             planning.show();
@@ -462,4 +478,5 @@ $(document).ready(function () {
     landingSubmit();
     runGeneral();
     runAdvanced();
+    signOut();
 });
