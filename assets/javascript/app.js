@@ -443,8 +443,30 @@ $(document).ready(function () {
     }
 
     function addItem() {
-        $('#add-list').on('click', function () {
+        $('#add-list').on('click', function (response) {
             alert('addbtn works');
+            // console.log(response.groups.items[1].venue.name);
+
+            // var result = response.groups.items[i].venue
+            //     $('#list-display').append("<ol>" +
+            //     "<li>" + result.name + "</li>" +
+
+            //     "</ol>")
+            // var clientID = key[keySelect]['clientID'];
+            // var clientSecret = key[keySelect]['clientSecret'];
+
+            // queryURL = "https://api.foursquare.com/v2/venues/explore?near=" + city + "&client_id=" + clientID + "&client_secret=" + clientSecret + "&query=" + search + "&v=20180711";
+            // console.log(queryURL);
+            // $.ajax({
+            //     url: queryURL,
+            //     method: "GET"
+            // }).then(function (response) {
+            //     var result = response.groups.items.venue[i]
+            //     $('#list-display').append("<ol>" +
+            //     "<li>" + result.name + "</li>" +
+
+            //     "</ol>")
+            // });
 
             $('#list-display').append("<ol>" +
                 "<li>" + localStorage.getItem("search") + "</li>" +
