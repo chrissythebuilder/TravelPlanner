@@ -419,14 +419,14 @@ $(document).ready(function () {
     }
 
     function signOut() {
-        $(".signout-button").on("click", function() {
+        $(".signout-button").on("click", function(event) {
             alert("this works!");
 
             localStorage.clear();
+            var d = destination.val().trim();
             // destination = destination.val().trim();
-            localStorage.setItem("destination", destination);
-
-
+            localStorage.setItem("destination", d);
+            console.log(d);
             alert(localStorage.getItem("destination"));
             alert(localStorage.getItem("search"));
             alert(parseInt(localStorage.getItem("totalDays")));
