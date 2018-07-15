@@ -421,10 +421,9 @@ $(document).ready(function () {
     function signOut() {
         $(".signout-button").on("click", function() {
             alert("this works!");
-            event.preventDefault();
 
             localStorage.clear();
-            destination = destination.val().trim();
+            // destination = destination.val().trim();
             localStorage.setItem("destination", destination);
 
 
