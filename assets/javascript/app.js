@@ -57,7 +57,7 @@ $(document).ready(function () {
     var rating;
     var tips;
     // Array list variables
-    var listArray=[];
+    var listArray = [];
 
     // To hide the opening fields.
     landing.show();
@@ -442,6 +442,33 @@ $(document).ready(function () {
         })
     }
 
+    // Allows user to sign-out
+    function signOut() {
+        $(".signout-button").on("click", function (event) {
+            alert("this works!");
+
+            localStorage.clear();
+            var d = destination.val().trim();
+            // destination = destination.val().trim();
+            localStorage.setItem("destination", d);
+            console.log(d);
+            alert(localStorage.getItem("destination"));
+            alert(localStorage.getItem("search"));
+            alert(parseInt(localStorage.getItem("totalDays")));
+        })
+    }
+
+    // 
+    function returnItinerary() {
+        $("#current-itinerary").on("click", function () {
+            // INSERT LOCAL STORAGE GET FUNCTIONS HERE
+            // ...
+            // ...
+            // ...
+            itinerary.show();
+        })
+    }
+
     // Allows user to move on to next day of planning
     function nextDay() {
         $("#next-day").on("click", function () {
@@ -480,12 +507,12 @@ $(document).ready(function () {
         $("#adv-disclaim").show();
     });
 
-
-
+    returnItinerary();
     addItem();
     nextDay();
     showItinerary();
     landingSubmit();
     runGeneral();
     runAdvanced();
+    signOut();
 });

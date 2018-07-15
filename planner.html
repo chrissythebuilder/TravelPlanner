@@ -39,58 +39,69 @@
 
     <!-- Set up Landing Page -->
     <div id="landing">
-        <p class="signout"> <a href="index.html"> Sign Out </a> </p>
+        <!-- <p class = "signout"> <a href = "index.html"> Sign Out </a> </p> -->
         <h1> BCKN Travel Planner </h1>
         <img src="assets/images/travelling6.jpg">
-            <div id = "details">
-                <p> From Date </p>
-                <input type="date" id="fromDate"> <br>
-                <p> To Date </p>
-                <input type="date" id="toDate"> <br>
-                <p> Destination </p>
-                <input type="text" id="destination" placeholder="City, Country"> <br>
-                <button id="submit2" class="btn waves-effect waves-light" type="submit" name="action">Let's go!<i class="material-icons right">send</i>
-                </button>
+        <div id="details">
+            <p> From Date </p>
+            <input type="date" id="fromDate">
+            <br>
+            <p> To Date </p>
+            <input type="date" id="toDate">
+            <br>
+            <p> Destination </p>
+            <input type="text" id="destination" placeholder="City, Country">
+            <br>
+            <button id="submit2" class="btn waves-effect waves-light" type="submit" name="action">Let's go!
+                <i class="material-icons right">send</i>
+            </button>
+            <div id="other-options">
+                <button type="submit" class="btn waves-effect waves-light" id="current-itinerary">Resume previous itinerary?</button>
             </div>
+        </div>
     </div>
 
     <!-- Modal for Character Empty-->
     <div class="modal fade" id="charEmpty" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Error: </h5>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Error: </h5>
+                </div>
+                <div class="modal-body">You did not type in the text field! Please try again.</div>
+                <div class="modal-footer">
+                    <button id="charEmptyBtn" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
-            <div class="modal-body">You did not type in the text field! Please try again.</div>
-            <div class="modal-footer">
-              <button id="charEmptyBtn" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
 
     <!-- Modal for Character Limits-->
     <div class="modal fade" id="charLimit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Error: </h5>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Error: </h5>
+                </div>
+                <div class="modal-body">You must type at least 5 characters. Please try again.</div>
+                <div class="modal-footer">
+                    <button id="charLimitBtn" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
-            <div class="modal-body">You must type at least 5 characters. Please try again.</div>
-            <div class="modal-footer">
-              <button id="charLimitBtn" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
 
     <!-- Set up Planner Page -->
     <div id="planning">
-        <p class ="signout"> <a href ="index.html"> Sign Out </a> </p>
+        <button type="submit" class="signout-button">
+            <a href="index.html"> Sign Out </a>
+            </p>
+        </button>
         <h1> BCKN Travel Planner </h1>
         <div id="title">
-            <h2>Welcome to <span id = "now-destination"> </span>! We are excited to assist in planning your trip.</h2>
-            
+            <h2>Welcome to
+                <span id="now-destination"> </span>! We are excited to assist in planning your trip.</h2>
+
             <p>We would like to officially welcome you to BCKN Trip Planner Builder's page. In here, you will have the opportunity
                 to start building your customized list of points of interest for the selected date. Once done, confirm your
                 list with the button below so you can see all the lists you have built as well as start planning activities
@@ -118,8 +129,8 @@
             <input type="text" class="form-control" id="advanced-input" placeholder="Advanced search...">
             <button class="btn btn-primary" id="adv-item">Search</button>
         </div>
-        
-        
+
+
         <!-- <div class="alert alert-success" id="gen-disclaim">
             <p id="open-general">Click here for a general search.</p>
         </div>
@@ -144,7 +155,9 @@
 
         <div id="list-display"></div>
         <br>
-        <a id="add-list" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+        <a id="add-list" class="btn-floating btn-large waves-effect waves-light red">
+            <i class="material-icons">add</i>
+        </a>
         <div class="form-group">
             <button class="btn btn-success" id="confirm-list">Confirm List</button>
         </div>
@@ -154,7 +167,10 @@
     <div class="banner"></div>
 
     <div id="itinerary">
-        <p class = "signout"> <a href = "index.html" id="signOut"> Sign Out </a> </p>
+        <button type="submit" class="signout-button">
+            <a href="index.html"> Sign Out </a>
+            </p>
+        </button>
         <h1> BCKN Travel Planner </h1>
         <div id="wrapper" class="row">
         </div>
@@ -171,9 +187,15 @@
 
     <script>
 
-    // document.getElementById('signOut').addEventListener('click', function(event) {
-    //     window.location = "https://bethgmariam.github.io/signinTestFirebase/";
-    //   });
+//     document.getElementById('signOut').addEventListener('click', function(event) {
+//         firebase.auth().signOut()
+//               .then(function() {
+//                 // Sign-out successful.
+//         window.location = "https://bethgmariam.github.io/signinTestFirebase/";
+
+//               })
+//       });
+
     </script>
 
 </body>
