@@ -112,7 +112,7 @@ input {
 }
 
 .btn-secondary {
-	position: absolute;
+	position: relative;
 	right: 10px;
 	top: 0;
 }

@@ -98,7 +98,7 @@ function landingSubmit() {
         }
 
         for (var i = 0; i < total; i++) {
-            var listDiv = $("<div>");
+            var listDiv = $("<div style='margin-bottom: 15px;'>");
             var listButton = $("<button style='background-color: #4B4B4B; width: 200px; display: block; margin:auto'>");
 
             // listDiv.addClass("row");
