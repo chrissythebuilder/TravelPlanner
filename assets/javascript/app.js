@@ -376,7 +376,7 @@ function showItinerary() {
         landing.hide();
         planning.hide();
         itinerary.show();
-
+        $("#confirm-display").empty();
         listArray.push(dayArray[dayCounter]);
         console.log(listArray);
 
@@ -462,7 +462,6 @@ $("#open-general").on("click", function () {
 
 // Search general button on click event to show rating, description, images and tips
 $(document).on("click", ".genBtn", function() {
-    alert("you clicked a btn");
     $("#images-display").empty();
     search = $(this).attr("data-name");
     localStorage.setItem("search", search);
