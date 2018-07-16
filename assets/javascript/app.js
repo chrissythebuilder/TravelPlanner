@@ -73,6 +73,7 @@ function landingSubmit() {
     // Add onclick even for the submit "add-item" button.
     submit2.on("click", function (event) {
         event.preventDefault();
+        localStorage.clear();
 
         fromDate = $("#fromDate").val().trim();
         toDate = $("#toDate").val().trim();
@@ -229,11 +230,11 @@ function runGeneral() {
                             console.log(rating);
                             var resultDiv = $("<div style='display:block; float:left' class='col col-4'>");
                             var btn = $("<button class='btn btn-link genBtn'>");
-                            var h7 = $("<h7>");
+                            var h7 = $("<br><h7>");
                             // var image = $("");
-                            var anchor = $("<a target='_blank' href=" + site + "><img src=" + img + " style='height: auto; width:100%; max-width: 360px' class='travelImages'></a>");
+                            var anchor = $("<br><a target='_blank' href=" + site + "><img src=" + img + " style='height: auto; width:100%; max-width: 360px' class='travelImages'></a>");
                             btn.text(name);
-                            h7.text("<br>Rating: " + rating);
+                            h7.text("Rating: " + rating);
                             btn.attr({
                                 "data-name": name
                             });
@@ -385,23 +386,27 @@ function showItinerary() {
 
    // Allows user to sign-out
    function signOut() {
-    $(".signout-button").on("click", function (event) {
+    $("#signout-button").on("click", function (event) {
         // alert("this works!");
 
-        localStorage.clear();
-        var d = destination.val().trim();
-        var search = search.val().trim();
-        var totalDays = totalDays.val().trim();
-        var listArray = listArray.val().trim();
-        // destination = destination.val().trim();
-        console.log(d);
-        console.log(search);
-        console.log(totalDays);
+        // localStorage.clear();
+        // var d = destination.val().trim();
+        // var search = search.val().trim();
+        // var totalDays = totalDays.val().trim();
+        // var listArray = listArray.val().trim();
+        // // destination = destination.val().trim();
+        // console.log(d);
+        // console.log(search);
+        // console.log(totalDays);
 
-        localStorage.setItem("destination", d);
-        localStorage.setItem("search", search);
-        localStorage.setItem("totalDays", totalDays);
-        localStorage.setItem("listArray", listArray);
+        // localStorage.setItem("destination", d);
+        // localStorage.setItem("search", search);
+        // localStorage.setItem("totalDays", totalDays);
+        // localStorage.setItem("listArray", listArray);
+        // console.log(localStorage.setItem("destination", d));
+        // console.log(localStorage.setItem("search", search));
+        // console.log(localStorage.setItem("totalDays", totalDays));
+        // console.log(localStorage.setItem("listArray", listArray));
         
     })
 }
@@ -409,10 +414,10 @@ function showItinerary() {
 // 
 function returnItinerary() {
     $("#current-itinerary").on("click", function () {
-        localStorage.getItem("destination");
-        localStorage.getItem("search");// advancedSearch or genSearch
-        localStorage.getItem("totalDays");
-        localStorage.getItem("listArray");
+        // localStorage.getItem("destination");
+        // localStorage.getItem("search");// advancedSearch or genSearch
+        // localStorage.getItem("totalDays");
+        // localStorage.getItem("listArray");
 
         // window.location = "index.html";
         landing.hide();
