@@ -409,10 +409,19 @@ function showItinerary() {
 // 
 function returnItinerary() {
     $("#current-itinerary").on("click", function () {
-        localStorage.getItem("destination");
-        localStorage.getItem("search");// advancedSearch or genSearch
-        localStorage.getItem("totalDays");
-        localStorage.getItem("listArray");
+        var tempDest=localStorage.getItem("destination")
+        var tempSearch=localStorage.getItem("search")// advancedSearch or genSearch
+        var tempTotalDay=(parseInt(localStorage.getItem("totalDays")));
+//         alert(tempDest)
+//         alert(tempSearch)
+//         alert(tempTotalDay)
+        $('#itineraryDisplay').append("<li>" + tempDest+ "</li>" +
+        "<li>" + tempSearch+ "</li>" +
+        "<li>" + tempSearch+ "</li>" +
+        "<li>" + tempTotalDay+ "</li>" 
+    )
+    //     // window.location = "index.html";
+        
 
         // window.location = "index.html";
         landing.hide();
