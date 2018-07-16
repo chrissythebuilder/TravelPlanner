@@ -449,22 +449,27 @@ $(document).ready(function () {
 
             localStorage.clear();
             var d = destination.val().trim();
+            var search = search.val().trim();
+            var totalDays = totalDays.val().trim();
             // destination = destination.val().trim();
-            localStorage.setItem("destination", d);
             console.log(d);
-            alert(localStorage.getItem("destination"));
-            alert(localStorage.getItem("search"));
-            alert(parseInt(localStorage.getItem("totalDays")));
+            console.log(search);
+            console.log(totalDays);
+
+            localStorage.setItem("destination", d);
+            localStorage.setItem("search", search);
+            localStorage.setItem("totalDays", totalDays);
+            
         })
     }
 
     // 
     function returnItinerary() {
         $("#current-itinerary").on("click", function () {
-            // INSERT LOCAL STORAGE GET FUNCTIONS HERE
-            // ...
-            // ...
-            // ...
+            alert(localStorage.getItem("destination"))
+            alert(localStorage.getItem("search"))// advancedSearch or genSearch
+            alert(parseInt(localStorage.getItem("totalDays")));
+            // window.location = "index.html";
             landing.hide();
             planning.hide();
             itinerary.show();
