@@ -392,6 +392,7 @@ function showItinerary() {
         var d = destination.val().trim();
         var search = search.val().trim();
         var totalDays = totalDays.val().trim();
+        var listArray = listArray.val().trim();
         // destination = destination.val().trim();
         console.log(d);
         console.log(search);
@@ -400,6 +401,7 @@ function showItinerary() {
         localStorage.setItem("destination", d);
         localStorage.setItem("search", search);
         localStorage.setItem("totalDays", totalDays);
+        localStorage.setItem("listArray", listArray);
         
     })
 }
@@ -407,9 +409,11 @@ function showItinerary() {
 // 
 function returnItinerary() {
     $("#current-itinerary").on("click", function () {
-        alert(localStorage.getItem("destination"))
-        alert(localStorage.getItem("search"))// advancedSearch or genSearch
-        alert(parseInt(localStorage.getItem("totalDays")));
+        localStorage.getItem("destination");
+        localStorage.getItem("search");// advancedSearch or genSearch
+        localStorage.getItem("totalDays");
+        localStorage.getItem("listArray");
+
         // window.location = "index.html";
         landing.hide();
         planning.hide();
