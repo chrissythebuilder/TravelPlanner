@@ -233,7 +233,7 @@ function runGeneral() {
                             // var image = $("");
                             var anchor = $("<a target='_blank' href=" + site + "><img src=" + img + " style='height: auto; width:100%; max-width: 360px' class='travelImages'></a>");
                             btn.text(name);
-                            h7.text("Rating: " + rating);
+                            h7.text("<br>Rating: " + rating);
                             btn.attr({
                                 "data-name": name
                             });
@@ -383,29 +383,38 @@ function showItinerary() {
     })
 }
 
-// Allows user to sign-out
-function signOut() {
+   // Allows user to sign-out
+   function signOut() {
     $(".signout-button").on("click", function (event) {
-        alert("this works!");
+        // alert("this works!");
 
         localStorage.clear();
         var d = destination.val().trim();
+        var search = search.val().trim();
+        var totalDays = totalDays.val().trim();
+        var listArray = listArray.val().trim();
         // destination = destination.val().trim();
-        localStorage.setItem("destination", d);
         console.log(d);
-        alert(localStorage.getItem("destination"));
-        alert(localStorage.getItem("search"));
-        alert(parseInt(localStorage.getItem("totalDays")));
+        console.log(search);
+        console.log(totalDays);
+
+        localStorage.setItem("destination", d);
+        localStorage.setItem("search", search);
+        localStorage.setItem("totalDays", totalDays);
+        localStorage.setItem("listArray", listArray);
+        
     })
 }
 
 // 
 function returnItinerary() {
     $("#current-itinerary").on("click", function () {
-        // INSERT LOCAL STORAGE GET FUNCTIONS HERE
-        // ...
-        // ...
-        // ...
+        localStorage.getItem("destination");
+        localStorage.getItem("search");// advancedSearch or genSearch
+        localStorage.getItem("totalDays");
+        localStorage.getItem("listArray");
+
+        // window.location = "index.html";
         landing.hide();
         planning.hide();
         itinerary.show();

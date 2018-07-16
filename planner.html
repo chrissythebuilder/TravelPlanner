@@ -11,8 +11,10 @@
     <link href="assets/css/reset.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Faster+One|PT+Sans:400,700" rel="stylesheet">
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <link rel="icon" href="assets/images/loginFavicon.png">
 
-
+    <!--Font Satisfy-->
+    <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
     <!-- Bootstrap Library -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
@@ -39,8 +41,8 @@
 
     <!-- Set up Landing Page -->
     <div id="landing">
-        <!-- <p class = "signout"> <a href = "index.html"> Sign Out </a> </p> -->
-        <h1> BCKN Travel Planner </h1>
+       <!-- <p class = "signout"> <a href = "index.html"> Sign Out </a> </p> -->
+        <h1> Triplist Planner </h1>
         <img src="assets/images/travelling6.jpg">
         <div id="details">
             <p> From Date </p>
@@ -93,15 +95,13 @@
 
     <!-- Set up Planner Page -->
     <div id="planning">
-        <button type="submit" class="signout-button">
+        <button type="submit" class="btn btn-secondary">
             <a href="index.html"> Sign Out </a>
             </p>
         </button>
-        <h1> BCKN Travel Planner </h1>
+        <h1> Triplist Planner </h1>
+        <div class = "imageBoxes"><h2 style="color: #ffffff">Welcome to <span id = "now-destination"> </span>!</h2><h2 style="color: #ffffff"> We are excited to assist in planning your trip.</h2></div>
         <div id="title">
-            <h2>Welcome to
-                <span id="now-destination"> </span>! We are excited to assist in planning your trip.</h2>
-
             <p>We would like to officially welcome you to BCKN Trip Planner Builder's page. In here, you will have the opportunity
                 to start building your customized list of points of interest for the selected date. Once done, confirm your
                 list with the button below so you can see all the lists you have built as well as start planning activities
@@ -112,9 +112,8 @@
                     participate in. </span>
             </p>
         </div>
-
-        <div id="weather-display"></div>
-
+        <div class= "imageBox" id="weather-display"></div>
+        
         <div class="alert" id="adv-disclaim">
             <p id="open-advanced">Click here if you already know the name of the place you are looking for!</p>
         </div>
@@ -129,19 +128,6 @@
             <input type="text" class="form-control" id="advanced-input" placeholder="Advanced search...">
             <button class="btn btn-primary" id="adv-item">Search</button>
         </div>
-
-
-        <!-- <div class="alert alert-success" id="gen-disclaim">
-            <p id="open-general">Click here for a general search.</p>
-        </div>
-        <div class="form-group" id="general-search">
-            <input type="text" class="form-control" id="general-input" placeholder="General search...">
-            <button class="btn btn-primary" id="gen-item">Search</button>
-        </div>
-        <div class="form-group" id="advanced-search">
-            <input type="text" class="form-control" id="advanced-input" placeholder="Advanced search...">
-            <button class="btn btn-primary" id="adv-item">Search</button>
-        </div> -->
 
         <div id="result-display"></div>
 
@@ -169,11 +155,11 @@
     <div class="banner"></div>
 
     <div id="itinerary">
-        <button type="submit" class="signout-button">
+        <button type="submit" class="btn btn-secondary">
             <a href="index.html"> Sign Out </a>
             </p>
         </button>
-        <h1> BCKN Travel Planner </h1>
+        <h1> Trip Planner </h1>
         <div id="wrapper" class="row">
         </div>
 
