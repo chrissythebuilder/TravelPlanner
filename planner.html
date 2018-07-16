@@ -9,13 +9,25 @@
     <title> Travel Planner </title>
 
     <link href="assets/css/reset.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Faster+One|PT+Sans:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Faster+One|PT+Sans:400,700" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <link rel="icon" href="assets/images/loginFavicon.png">
 
+    <!--Font Satisfy-->
+    <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
     <!-- Bootstrap Library -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
         crossorigin="anonymous">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
     <link href="assets/css/style.css" rel="stylesheet">
+
+
     <!-- Firebase Library -->
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
 
@@ -29,38 +41,53 @@
 
     <!-- Set up Landing Page -->
     <div id="landing">
-        <img src="assets/images/travelling3.jpg">
+       <!-- <p class = "signout"> <a href = "index.html"> Sign Out </a> </p> -->
+        <h1> Triplist Planner </h1>
+        <img src="assets/images/travelling6.jpg">
         <div id="details">
-            <h1> BCKN Trip Planner </h1>
             <p> From Date </p>
             <input type="date" id="fromDate">
-            <p> To Date </p>
+            <br>
+            <p> To Date </p> 
             <input type="date" id="toDate">
+            <br>
             <p> Destination </p>
             <input type="text" id="destination" placeholder="City, Country">
             <br>
-            <form action="planner.html">
-                <button type="submit" class="btn btn-success" id="submit2">Time to plan!</button>
-            </form>
+            <button id="submit2" class="btn waves-effect waves-light" type="submit" name="action">Let's go!
+                <i class="material-icons right">send</i>
+            </button>
+            <div id="other-options">
+                <button type="submit" class="btn waves-effect waves-light" id="current-itinerary">Resume previous itinerary?</button>
+            </div>
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+    <!-- Modal for Character Empty-->
+    <div class="modal fade" id="charEmpty" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Here are the top 5 recommendations based on your destination:</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">Error: </h5>
                 </div>
-                <div class="modal-body">
-                    ...
-                </div>
+                <div class="modal-body">You did not type in the text field! Please try again.</div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button id="charEmptyBtn" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Character Limits-->
+    <div class="modal fade" id="charLimit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Error: </h5>
+                </div>
+                <div class="modal-body">You must type at least 5 characters. Please try again.</div>
+                <div class="modal-footer">
+                    <button id="charLimitBtn" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -68,8 +95,13 @@
 
     <!-- Set up Planner Page -->
     <div id="planning">
+        <button type="submit" class="btn btn-secondary">
+            <a href="index.html"> Sign Out </a>
+            </p>
+        </button>
+        <h1> Triplist Planner </h1>
+        <div class = "imageBoxes"><h2 style="color: #ffffff">Welcome to <span id = "now-destination"> </span>!</h2><h2 style="color: #ffffff"> We are excited to assist in planning your trip.</h2></div>
         <div id="title">
-            <h2>Planner Page</h2>
             <p>We would like to officially welcome you to BCKN Trip Planner Builder's page. In here, you will have the opportunity
                 to start building your customized list of points of interest for the selected date. Once done, confirm your
                 list with the button below so you can see all the lists you have built as well as start planning activities
@@ -80,12 +112,12 @@
                     participate in. </span>
             </p>
         </div>
-        <div id="weather-display"></div>
-
-        <div class="alert alert-danger" id="adv-disclaim">
+        <div class= "imageBox" id="weather-display"></div>
+        
+        <div class="alert" id="adv-disclaim">
             <p id="open-advanced">Click here if you already know the name of the place you are looking for!</p>
         </div>
-        <div class="alert alert-success" id="gen-disclaim">
+        <div class="alert" id="gen-disclaim">
             <p id="open-general">Click here for a general search.</p>
         </div>
         <div class="form-group" id="general-search">
@@ -99,15 +131,21 @@
 
         <div id="result-display"></div>
 
+        <div id="rating-display"></div>
+
+        <div id="description-display"></div>
+
         <div class="row" id="images-display"></div>
 
         <div id="reviews-display"></div>
 
-        <div id="list-display"></div>
         <br>
-        <div class="form-group">
-            <button class="btn btn-success" id="add-list">Add Item</button>
-        </div>
+        <a id="add-list" class="btn-floating btn-large waves-effect waves-light red">
+            <i class="material-icons">add</i>
+        </a>
+        
+        <div id="list-display"><h7>Your current list of things to do: </h7></div>
+        
         <div class="form-group">
             <button class="btn btn-success" id="confirm-list">Confirm List</button>
         </div>
@@ -117,17 +155,38 @@
     <div class="banner"></div>
 
     <div id="itinerary">
+        <button type="submit" class="btn btn-secondary">
+            <a href="index.html"> Sign Out </a>
+            </p>
+        </button>
+        <h1> Trip Planner </h1>
         <div id="wrapper" class="row">
         </div>
 
         <div class="form-group">
             <button class="btn btn-success" id="next-day">Click here to move to the next day.</button>
         </div>
+        
+        <div id="confirm-display"></div>
     </div>
 
     <!-- jQuery Library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="assets/javascript/keys.js"></script>
     <script src="assets/javascript/app.js"></script>
+
+    <script>
+
+//     document.getElementById('signOut').addEventListener('click', function(event) {
+//         firebase.auth().signOut()
+//               .then(function() {
+//                 // Sign-out successful.
+//         window.location = "https://bethgmariam.github.io/signinTestFirebase/";
+
+//               })
+//       });
+
+    </script>
 
 </body>
 
