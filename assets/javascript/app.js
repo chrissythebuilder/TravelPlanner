@@ -445,16 +445,16 @@ $(document).ready(function () {
     // Allows user to sign-out
     function signOut() {
         $(".signout-button").on("click", function (event) {
-            alert("this works!");
+            // alert("this works!");
 
             localStorage.clear();
             var d = destination.val().trim();
             var search = search.val().trim();
             var totalDays = totalDays.val().trim();
             // destination = destination.val().trim();
-            console.log(d);
-            console.log(search);
-            console.log(totalDays);
+            // console.log(d);
+            // console.log(search);
+            // console.log(totalDays);
 
             localStorage.setItem("destination", d);
             localStorage.setItem("search", search);
@@ -466,9 +466,9 @@ $(document).ready(function () {
     // 
     function returnItinerary() {
         $("#current-itinerary").on("click", function () {
-            alert(localStorage.getItem("destination"))
-            alert(localStorage.getItem("search"))// advancedSearch or genSearch
-            alert(parseInt(localStorage.getItem("totalDays")));
+            localStorage.getItem("destination");
+            localStorage.getItem("search");// advancedSearch or genSearch
+            localStorage.getItem("totalDays");
             // window.location = "index.html";
             landing.hide();
             planning.hide();
