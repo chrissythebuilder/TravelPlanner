@@ -439,8 +439,11 @@ $("#charLimitBtn").on("click", function () {
 $("#open-advanced").on("click", function () {
     searchAdvanced.show();
     searchGeneral.hide();
-    $("#images-display").empty();
     $("#result-display").empty();
+    $("#rating-display").empty();
+    $("#description-display").empty();
+    $("#images-display").empty();
+    $("#reviews-display").empty();
     $("#gen-disclaim").show();
     $("#adv-disclaim").hide();
 });
@@ -448,8 +451,11 @@ $("#open-advanced").on("click", function () {
 $("#open-general").on("click", function () {
     searchAdvanced.hide();
     searchGeneral.show();
-    $("#images-display").empty();
     $("#result-display").empty();
+    $("#rating-display").empty();
+    $("#description-display").empty();
+    $("#images-display").empty();
+    $("#reviews-display").empty();
     $("#gen-disclaim").hide();
     $("#adv-disclaim").show();
 });
