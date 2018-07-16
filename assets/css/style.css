@@ -111,21 +111,22 @@ input {
 	margin-top: 15px;
 }
 
-.signout-button {
+.btn-secondary {
 	position: absolute;
 	right: 10px;
 	top: 0;
 }
 
-/* .signout a {
+.btn-secondary a {
 	text-decoration: none;
-	color: black
+	color: white;
+	font-weight: 700;
 }
 
-.signout a:hover {
+.btn-secondary a:hover {
 	text-decoration: line-through;
-	color: grey;
-} */
+	background-color: green;
+}
 
 @media only screen and (max-width: 1224px) {
 
@@ -388,6 +389,9 @@ width: 100%;
 	box-shadow: none;
 }
 
+#next-day {
+	margin-top: 100px;
+}
 
 
 #rating-display  {
