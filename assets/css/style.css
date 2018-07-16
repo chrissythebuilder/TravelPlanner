@@ -1,30 +1,48 @@
 /* Main Page */
 
+/* .banner{
+height: 150px;
+width: 100%;
+background-color:rgba(213,65,55,.8);
+} */
+	
+#fasterOne {
+font-family: 'Satisfy', cursive;
+color: #FFFFFF;
+text-align: center;
+margin-top: 50px;
+font-size: 100px;
+padding-top: 20px;
+background-color: rgb(213, 65, 55, 0.8);
+}
+
+
 #creteRound{
-    font-family: 'Crete Round', seri;
-    text-align:center;
-    color:white;
-    font-size:80px;
-  }
+font-family: 'Crete Round', seri;
+text-align:center;
+color:white;
+font-size:80px; 
+  } 
 
-  #patuaOne{
-    font-family: 'Patua One', cursive;
-    text-align:center;
-    color:white;
-    font-size:80px;
+#patuaOne{
+font-family: 'Patua One', cursive;
+text-align:center;
+color:white;
+font-size:80px;
+width: 100%;
 
-  }
+ } 
 
 #fasterOne{
-  font-family: 'Faster One', cursive;
-  /* color:#D84B37; */
-  color:white;
+  font-family: 'Satisfy', cursive;
+  color:#D84B37;
+  color:white; 
   text-align:center;
-  font-size:80px;
-  margin-top:25px;
+  font-size:100px; 
+  font-weight: bold; 
+  margin-top:50px;
   margin-bottom:50px;
-
-}
+ } 
 
 img{
   height:25%;
@@ -40,10 +58,11 @@ h1 {
 	text-align: center;
 	font-size: 350%;
 	margin-bottom: 20px;
-	font-family: 'Faster One', cursive;
-	color: white;
+	font-family: 'Satisfy', cursive;
+	color: #4B4B4B;
 	background-color: rgba(213,65,55,.8);
-	/* transform: skewX(20deg); */
+	width: 100%;
+	
 }
 
 #landing img {
@@ -154,6 +173,35 @@ header {
 	margin-right: 30px;
 }
 
+.imageBox {
+background-image: url("../images/clouds.jpg");
+height: 300;
+}
+
+.imageBoxes {
+background-image: url("../images/landing-mountains.jpg");
+height: 500;
+}
+
+.insideBox {
+background-color: (255, 255, 255, 0.5);
+height: 300;
+}
+
+h2 {
+font-family: 'Satisfy', cursive;
+text-align: center;
+color: #4B4B4B;
+padding: 40px;
+
+}
+
+#title {
+background-color: (75, 75, 75, 0.5);
+height: 30;
+width: 100%;
+}
+
 #title h2 {
 	font-family: 'PT Sans', sans-serif;
 	font-size: 150%;
@@ -214,6 +262,7 @@ header {
 
 #weather-display {
 	text-align: center;
+	position: right;
 }
 
 #add-list {
@@ -221,3 +270,8 @@ header {
 }
 
 
+#rating-display  {
+background-color: #4B4B4B;
+color: #ffffff;
+margin-left: 10px;
+}
