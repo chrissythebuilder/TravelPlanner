@@ -26,8 +26,42 @@ N/A
 * [jQuery](https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js) - The jQuery framework used
 * [Firebase](https://www.gstatic.com/firebasejs/5.2.0/firebase.js) - The Firebase database used
 
-## Versioning
-***** fill out later *******
+## Versioning (Recent)
+Commits on Jul 24, 2018
+
+    Update README.md
+    @kkbhasin
+    kkbhasin committed 37 seconds ago
+
+Commits on Jul 16, 2018
+
+    update to button CSS
+    kkb
+    kkb committed 8 days ago
+
+    merging new API keys
+    kkb
+    kkb committed 8 days ago
+
+    basic changes to general search
+    kkb
+    kkb committed 8 days ago
+
+    minor changes
+    kkb
+    kkb committed 8 days ago
+
+    index and planning html changes and updates for effective merge
+    @chrissythebuilder
+    chrissythebuilder committed 8 days ago
+
+    Update to CSS
+    @niravsen
+    niravsen committed 8 days ago
+
+    updates to CSS
+    @niravsen
+    niravsen committed 8 days ago
 
 ## Authors
 
