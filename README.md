@@ -21,10 +21,10 @@ N/A
 
 ## Built With
 
-* [Bootstrap](https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css) - The css framework used
+* [Bootstrap](https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css) - A css framework used
+* [Materialize](https://materializecss.com/) - A css framework used
 * [jQuery](https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js) - The jQuery framework used
 * [Firebase](https://www.gstatic.com/firebasejs/5.2.0/firebase.js) - The Firebase database used
-********* USE ANOTHER LANGUAGE *************
 
 ## Versioning
 ***** fill out later *******
